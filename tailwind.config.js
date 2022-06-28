@@ -29,10 +29,13 @@ module.exports = {
 
         DarkBlue: '#041C32',
         DeepBlue: '#04293A',
-        AteneoBlue: '#064663',
+        AteneoBlue: '#0b5476',
         Fawn: '#ECB365',
 
         EerieBlack: '#101820',
+        PineTree: '#2F2519',
+
+        LightRose: '#da6784',
       },
     },
   },

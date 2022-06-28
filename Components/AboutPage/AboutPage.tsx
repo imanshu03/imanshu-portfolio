@@ -1,4 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  LegacyRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { gsap, Power2 } from 'gsap';
 import TextWithShadow from '../Common/TextWithShadow';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
@@ -16,10 +22,14 @@ const NAME = [
   { first: 'ਇਮਾਂਸ਼ੂ', last: 'ਰਾਠੌਰ' },
 ];
 
-const AboutPage: React.FC<{}> = () => {
-  const animStartRef = useRef(null);
-
-  const entry = useIntersectionObserver(animStartRef, {});
+const AboutPage = forwardRef<React.RefObject<Element>, {}>(function AboutPage(
+  _props,
+  wrapperRef,
+) {
+  const entry = useIntersectionObserver(
+    wrapperRef as React.RefObject<Element>,
+    {},
+  );
 
   const [nameIdx, setNameIdx] = useState<number>(0);
   const [triggerStaticAnim, setTriggerStaticAnim] = useState<boolean>(false);
@@ -46,7 +56,7 @@ const AboutPage: React.FC<{}> = () => {
         tagLineAnimRef.current,
         { opacity: 0, left: -50, ease: Power2.easeOut },
         { opacity: 1, left: 0 },
-        '>-0.2',
+        '>+0.4',
       );
 
       // Intro Timeline
@@ -77,7 +87,7 @@ const AboutPage: React.FC<{}> = () => {
         firstNameAnimRef.current,
         { opacity: 0, top: 100, ease: Power2.easeOut },
         { opacity: 1, top: 0 },
-        '0.2',
+        '0.1',
       );
       nameTl.fromTo(
         lastNameAnimRef.current,
@@ -129,14 +139,14 @@ const AboutPage: React.FC<{}> = () => {
 
   return (
     <div
-      className="flex flex-col flex-nowrap h-full lg:h-[100vh] w-[100vw] p-[0.8rem] pt-8 lg:pr-[1.2rem]"
-      ref={animStartRef}
+      className="flex flex-col flex-nowrap h-auto w-[100vw] p-[0.8rem] pt-8 lg:pr-[1.2rem] box-border"
+      ref={wrapperRef as LegacyRef<HTMLDivElement>}
     >
       {/* Image and Name */}
       <div className="w-full h-min flex flex-col items-center md:flex-row md:justify-center">
         <div className="h-full w-full flex flex-col items-start justify-center order-2 md:w-[50%] md:order-1">
           <p
-            className="text-YellowRed dark:text-white text-2xl md:text-3xl lg:text-4xl relative"
+            className="text-YellowRed dark:text-PastelPink text-2xl md:text-3xl lg:text-4xl relative"
             ref={greetAnimRef}
           >
             hi, i am
@@ -144,23 +154,23 @@ const AboutPage: React.FC<{}> = () => {
           <div className="flex flex-col flex-wrap items-start justify-center">
             <TextWithShadow
               variant="heading"
-              className="text-YellowRed dark:text-white w-full tracking-wide"
-              shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
+              className="text-YellowRed dark:text-PastelPink w-full tracking-wide"
+              shadowClassName="ts-china-rose-3 md:ts-china-rose-5 lg:ts-china-rose-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
               ref={firstNameAnimRef}
             >
               {NAME[nameIdx].first}
             </TextWithShadow>
             <TextWithShadow
               variant="heading"
-              className="text-YellowRed dark:text-white w-full mt-[0.2rem] tracking-wide"
-              shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
+              className="text-YellowRed dark:text-PastelPink w-full mt-[0.2rem] tracking-wide"
+              shadowClassName="ts-china-rose-3 md:ts-china-rose-5 lg:ts-china-rose-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
               ref={lastNameAnimRef}
             >
               {NAME[nameIdx].last}
             </TextWithShadow>
           </div>
           <p
-            className="text-YellowRed dark:text-white relative text-2xl md:text-3xl lg:text-4xl"
+            className="text-YellowRed dark:text-PastelPink relative text-2xl md:text-3xl lg:text-4xl"
             ref={tagLineAnimRef}
           >
             a frontend engineer
@@ -175,7 +185,7 @@ const AboutPage: React.FC<{}> = () => {
           <span
             key={idx}
             ref={(el) => (introAnimRef.current[idx] = el)}
-            className="text-PastelPink dark:text-WildBlue text-base md:text-lg lg:text-xl relative mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block font-light"
+            className="text-PastelPink dark:text-EggShell text-base md:text-lg lg:text-xl relative mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block font-light"
           >
             {text}
           </span>
@@ -183,6 +193,6 @@ const AboutPage: React.FC<{}> = () => {
       </p>
     </div>
   );
-};
+});
 
-export default AboutPage;
+export default React.memo(AboutPage);
