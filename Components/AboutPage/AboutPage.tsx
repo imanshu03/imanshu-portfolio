@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap, Power2 } from 'gsap';
-import TextWithShadow from '../TextWithShadow';
+import TextWithShadow from '../Common/TextWithShadow';
 import { useIntersectionObserver } from '../../hooks';
 
 const description = [

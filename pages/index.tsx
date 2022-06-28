@@ -1,10 +1,10 @@
 import type { NextPage } from 'next';
-import AboutPage from '../Components/AboutPage';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
 import ThemeToggle from '../Components/ThemeToggle';
 import { useRef } from 'react';
-import SkillsPage from '../Components/SkillsPage';
 import ErrorBoundary from '../Components/ErrorBoundary';
+import SkillsPage from '../Components/SkillsPage';
+import AboutPage from '../Components/AboutPage';
 
 const Home: NextPage = () => {
   const ref = useRef<IParallax>(null);
