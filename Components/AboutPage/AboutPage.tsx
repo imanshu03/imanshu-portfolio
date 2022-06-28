@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap, Power2 } from 'gsap';
 import TextWithShadow from '../Common/TextWithShadow';
-import { useIntersectionObserver } from '../../hooks';
+import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 const description = [
   'I have more than 2.5 years of experience in software development. I believe in developing modern, reactive and user friendly web applications using the latest technologies.',
@@ -144,7 +144,7 @@ const AboutPage: React.FC<{}> = () => {
           <div className="flex flex-col flex-wrap items-start justify-center">
             <TextWithShadow
               variant="heading"
-              className="text-YellowRed dark:text-white w-full"
+              className="text-YellowRed dark:text-white w-full tracking-wide"
               shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
               ref={firstNameAnimRef}
             >
@@ -152,7 +152,7 @@ const AboutPage: React.FC<{}> = () => {
             </TextWithShadow>
             <TextWithShadow
               variant="heading"
-              className="text-YellowRed dark:text-white w-full mt-[0.2rem]"
+              className="text-YellowRed dark:text-white w-full mt-[0.2rem] tracking-wide"
               shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
               ref={lastNameAnimRef}
             >
