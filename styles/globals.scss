@@ -38,20 +38,35 @@ a {
 }
 
 $colors: (
-  "ruby": theme('colors.darkMainRuby'),
-  "rose": theme('colors.darkMainRose'),
-  "yellow": theme('colors.darkMainYellow'),
-  "purple": theme('colors.darkMainPurple'),
-  "green": theme('colors.lightMainGreen'),
-  "eggshell": theme('colors.lightMainEggShell'),
-  "champagne": theme('colors.lightMainChampagne'),
-  "orange": theme('colors.lightMainOrange'),
+  "purple-taupe": theme('colors.PurpleTaupe'),
+  "deep-ruby": theme('colors.DeepRuby'),
+  "china-rose": theme('colors.ChinaRose'),
+  "yellow-red": theme('colors.YellowRed'),
+
+  "gun-metal": theme('colors.GunMetal'),
+
+  "pastel-pink": theme('colors.PastelPink'),
+  "languid-lavender": theme('colors.LanguidLavender'),
+  "wild-blue": theme('colors.WildBlue'),
+  "shadow-blue": theme('colors.ShadowBlue'),
+
+  "light-silver": theme('colors.LightSilver'),
+  "egg-shell": theme('colors.EggShell'),
+  "champagne": theme('colors.Champagne'),
+  "macroni-cheese": theme('colors.MacroniCheese'),
+  
+  "dark-blue": theme('colors.DarkBlue'),
+  "deep-blue": theme('colors.DeepBlue'),
+  "ateneo-blue": theme('colors.AteneoBlue'),
+  "fawn": theme('colors.Fawn'),
+
+  "eerie-black": theme('colors.EerieBlack'),
 );
 
 @mixin createTextShadows($sizes) {
   @each $colorName, $colorValue in $colors {    
     @for $size from 1 through $sizes {
-      .text-shadow-#{$colorName}-#{$size} {
+      .ts-#{$colorName}-#{$size} {
         text-shadow: textShadow(0.25, $size, $colorValue);
       }
     };
@@ -61,3 +76,4 @@ $colors: (
 @layer components {
   @include createTextShadows(4);
 }
+

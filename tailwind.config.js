@@ -9,18 +9,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkMainPurple: '#4C3A51',
-        darkMainRuby: '#774360',
-        darkMainRose: '#B25068',
-        darkMainYellow: '#E7AB79',
-        // lightMainPink: '#F2D7D9',
-        // lightMainLavender: '#D3CEDF',
-        // lightMainBlue: '#9CB4CC',
-        // lightMainShadowBlue: '#748DA6',
-        lightMainGreen: '#CEE5D0',
-        lightMainEggShell: '#F3F0D7',
-        lightMainChampagne: '#FED2AA',
-        lightMainOrange: '#FFBF86',
+        PurpleTaupe: '#4C3A51',
+        DeepRuby: '#774360',
+        ChinaRose: '#B25068',
+        YellowRed: '#E7AB79',
+
+        GunMetal: '#1F1D36',
+
+        PalePink: '#F2D7D9',
+        LanguidLavender: '#D3CEDF',
+        WildBlue: '#9CB4CC',
+        ShadowBlue: '#748DA6',
+
+        LightSilver: '#CEE5D0',
+        EggShell: '#F3F0D7',
+        Champagne: '#FED2AA',
+        MacroniCheese: '#FFBF86',
+        PastelPink: '#E9A6A6',
+
+        DarkBlue: '#041C32',
+        DeepBlue: '#04293A',
+        AteneoBlue: '#064663',
+        Fawn: '#ECB365',
+
+        EerieBlack: '#101820',
       },
     },
   },

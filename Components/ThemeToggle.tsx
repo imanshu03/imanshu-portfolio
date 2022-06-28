@@ -6,7 +6,7 @@ import SunIcon from '../Assets/SunIcon';
 export const ThemeContext = createContext<string>('dark');
 
 const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [toggle, setToggle] = useState<boolean>(false);
+  const [toggle, setToggle] = useState<boolean>(true);
   const themeIconRef = useRef<HTMLDivElement>(null);
 
   const onThemeChange = () => {
@@ -23,9 +23,8 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       if (theme === 'dark') document.documentElement.classList.add('dark');
     } else {
       sessionStorage.removeItem('theme');
-      sessionStorage.setItem('theme', 'dark');
-      setToggle(false);
-      document.documentElement.classList.add('dark');
+      sessionStorage.setItem('theme', 'light');
+      setToggle(true);
     }
   }, []);
 
@@ -45,9 +44,9 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         ref={themeIconRef}
       >
         {toggle ? (
-          <MoonIcon className="w-5 h-5 fill-darkMainPurple" />
+          <MoonIcon className="w-5 h-5 fill-DeepBlue" />
         ) : (
-          <SunIcon className="w-5 h-5 fill-lightMainOrange" />
+          <SunIcon className="w-5 h-5 fill-MacroniCheese" />
         )}
       </div>
       <ThemeContext.Provider value={toggle ? 'light' : 'dark'}>

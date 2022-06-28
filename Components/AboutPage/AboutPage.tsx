@@ -51,17 +51,15 @@ const AboutPage: React.FC<{}> = () => {
 
       // Intro Timeline
       const introTl = gsap.timeline();
-      introAnimRef.current.map((ref, idx) => {
+      introAnimRef.current.map((ref) => {
         introTl.fromTo(
           ref,
           {
             opacity: 0,
             top: -100,
-            ...(idx % 2 === 0 ? { left: -50 } : { right: -50 }),
           },
           {
             opacity: 1,
-            ...(idx % 2 === 0 ? { left: 0 } : { right: 0 }),
             top: 0,
           },
           '<0.1',
@@ -138,7 +136,7 @@ const AboutPage: React.FC<{}> = () => {
       <div className="w-full h-min flex flex-col items-center md:flex-row md:justify-center">
         <div className="h-full w-full flex flex-col items-start justify-center order-2 md:w-[50%] md:order-1">
           <p
-            className="dark:text-darkMainYellow text-2xl md:text-3xl lg:text-4xl relative"
+            className="text-YellowRed dark:text-white text-2xl md:text-3xl lg:text-4xl relative"
             ref={greetAnimRef}
           >
             hi, i am
@@ -146,23 +144,23 @@ const AboutPage: React.FC<{}> = () => {
           <div className="flex flex-col flex-wrap items-start justify-center">
             <TextWithShadow
               variant="heading"
-              className="dark:text-darkMainYellow w-full"
-              shadowClassName="dark:text-shadow-rose-4"
+              className="text-YellowRed dark:text-white w-full"
+              shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
               ref={firstNameAnimRef}
             >
               {NAME[nameIdx].first}
             </TextWithShadow>
             <TextWithShadow
               variant="heading"
-              className="dark:text-darkMainYellow w-full mt-[0.2rem]"
-              shadowClassName="dark:text-shadow-rose-4"
+              className="text-YellowRed dark:text-white w-full mt-[0.2rem]"
+              shadowClassName="ts-china-rose-4 dark:ts-shadow-blue-4"
               ref={lastNameAnimRef}
             >
               {NAME[nameIdx].last}
             </TextWithShadow>
           </div>
           <p
-            className="dark:text-darkMainYellow relative text-2xl md:text-3xl lg:text-4xl"
+            className="text-YellowRed dark:text-white relative text-2xl md:text-3xl lg:text-4xl"
             ref={tagLineAnimRef}
           >
             a frontend engineer
@@ -177,7 +175,7 @@ const AboutPage: React.FC<{}> = () => {
           <span
             key={idx}
             ref={(el) => (introAnimRef.current[idx] = el)}
-            className="dark:text-darkMainRose text-base md:text-lg lg:text-xl relative mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block font-light"
+            className="text-PastelPink dark:text-WildBlue text-base md:text-lg lg:text-xl relative mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block font-light"
           >
             {text}
           </span>
