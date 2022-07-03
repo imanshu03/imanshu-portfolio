@@ -2,12 +2,14 @@ import React, {
   forwardRef,
   LegacyRef,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react';
-import { gsap, Power2 } from 'gsap';
+import { Power2 } from 'gsap';
 import TextWithShadow from '../Common/TextWithShadow';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
+import useTimeline from '../../hooks/useTimeline';
 
 const description = [
   'I have more than 2.5 years of experience in software development. I believe in developing modern, reactive and user friendly web applications using the latest technologies.',
@@ -31,11 +33,21 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
     const { className } = props;
     const entry = useIntersectionObserver(
       wrapperRef as React.RefObject<Element>,
-      {},
+      { threshold: 1.0 },
     );
+    const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
-    const [nameIdx, setNameIdx] = useState<number>(0);
-    const [triggerStaticAnim, setTriggerStaticAnim] = useState<boolean>(false);
+    const masterTimeline = useTimeline();
+    const nameAnimTimeline = useTimeline({ repeat: -1 }, false);
+
+    const [nameAnimState, setNameAnimState] = useState<{
+      index: number;
+      pause: boolean;
+    }>({
+      index: 0,
+      pause: false,
+    });
+    const cycle = useRef<number>(0);
 
     const greetAnimRef = useRef(null);
     const firstNameAnimRef = useRef(null);
@@ -43,89 +55,92 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
     const tagLineAnimRef = useRef(null);
     const introAnimRef = useRef(null);
 
-    // Master Timeline
+    // adding tweens to timelines
     useEffect(() => {
-      if (entry?.isIntersecting) {
-        const masterTl = gsap.timeline();
-        masterTl.fromTo(
-          greetAnimRef.current,
-          { left: 50, opacity: 0, ease: Power2.easeOut },
-          { left: 0, opacity: 1 },
-        );
+      if (!masterTimeline && !nameAnimTimeline) return;
+      masterTimeline?.addLabel('greetRef', 0);
+      masterTimeline?.addLabel('nameRef', 0.2);
+      masterTimeline?.addLabel('taglineRef', 0.8);
+      masterTimeline?.addLabel('introRef', 1);
 
-        masterTl.fromTo(
-          tagLineAnimRef.current,
-          { opacity: 0, left: -50, ease: Power2.easeOut },
-          { opacity: 1, left: 0 },
-          '>+0.4',
-        );
+      masterTimeline?.fromTo(
+        greetAnimRef.current,
+        { left: 50, opacity: 0, ease: Power2.easeOut },
+        { left: 0, opacity: 1 },
+        'greetRef',
+      );
+      masterTimeline?.fromTo(
+        tagLineAnimRef.current,
+        { opacity: 0, left: -50, ease: Power2.easeOut },
+        { opacity: 1, left: 0 },
+        'taglineRef',
+      );
+      masterTimeline?.fromTo(
+        introAnimRef.current,
+        { opacity: 0, ease: Power2.easeOut },
+        { opacity: 1 },
+        'introRef',
+      );
 
-        masterTl.fromTo(
-          introAnimRef.current,
-          { opacity: 0, ease: Power2.easeOut },
-          { opacity: 1 },
-          '>-0.2',
-        );
-      }
-    }, [entry]);
-
-    // Looped Name timeline
-    useEffect(() => {
-      if (entry?.isIntersecting) {
-        const nameTl = gsap.timeline({ repeat: NAME.length - 1 });
-        nameTl.fromTo(
-          firstNameAnimRef.current,
-          { opacity: 0, top: 100, ease: Power2.easeOut },
-          { opacity: 1, top: 0 },
-          '0.1',
-        );
-        nameTl.fromTo(
-          lastNameAnimRef.current,
-          { opacity: 0, top: 100, ease: Power2.easeOut },
-          { opacity: 1, top: 0 },
-          '>-0.2',
-        );
-        nameTl.to(
-          firstNameAnimRef.current,
-          { opacity: 0, top: -100, ease: Power2.easeIn },
-          '>+3',
-        );
-        nameTl.to(
-          lastNameAnimRef.current,
-          {
-            opacity: 0,
-            top: -100,
-            ease: Power2.easeIn,
-            onComplete: () => {
-              setNameIdx((prev) => {
-                setTriggerStaticAnim(prev + 1 === NAME.length);
-                return (prev + 1) % NAME.length;
-              });
-            },
+      nameAnimTimeline?.fromTo(
+        firstNameAnimRef.current,
+        { opacity: 0, top: 100, ease: Power2.easeOut },
+        { opacity: 1, top: 0 },
+        '0.1',
+      );
+      nameAnimTimeline?.fromTo(
+        lastNameAnimRef.current,
+        { opacity: 0, top: 100, ease: Power2.easeOut },
+        {
+          opacity: 1,
+          top: 0,
+          onComplete: () => {
+            setNameAnimState((prevState) => {
+              let { pause } = prevState;
+              if (cycle.current) pause = !pause;
+              return { ...prevState, pause };
+            });
           },
-          '>-0.2',
-        );
-      }
-    }, [entry]);
+        },
+        '>-0.2',
+      );
+      nameAnimTimeline?.to(
+        firstNameAnimRef.current,
+        { opacity: 0, top: -100, ease: Power2.easeIn },
+        '>+3',
+      );
+      nameAnimTimeline?.to(
+        lastNameAnimRef.current,
+        {
+          opacity: 0,
+          top: -100,
+          ease: Power2.easeIn,
+          onComplete: () => {
+            setNameAnimState((prevState) => {
+              let { index } = prevState;
+              if (index + 1 === NAME.length) cycle.current += 1;
+              index = (index + 1) % NAME.length;
+              return { ...prevState, index };
+            });
+          },
+        },
+        '>-0.2',
+      );
 
-    // Static Name Timeline
+      masterTimeline?.add(nameAnimTimeline as GSAPTimeline, 'nameRef');
+    }, [masterTimeline, nameAnimTimeline]);
+
+    // play master timeline on view
     useEffect(() => {
-      if (triggerStaticAnim && entry?.isIntersecting) {
-        const nameTl = gsap.timeline();
-        nameTl.fromTo(
-          firstNameAnimRef.current,
-          { opacity: 0, top: 100, ease: Power2.easeOut },
-          { opacity: 1, top: 0 },
-          '0.2',
-        );
-        nameTl.fromTo(
-          lastNameAnimRef.current,
-          { opacity: 0, top: 100, ease: Power2.easeOut },
-          { opacity: 1, top: 0 },
-          '>-0.2',
-        );
-      }
-    }, [triggerStaticAnim, entry]);
+      if (!masterTimeline) return;
+      if (isIntersecting) masterTimeline.play();
+    }, [isIntersecting, masterTimeline]);
+
+    // pause name timeline on 1 repition
+    useEffect(() => {
+      if (!nameAnimTimeline) return;
+      if (nameAnimState.pause) nameAnimTimeline.pause(nameAnimTimeline.time());
+    }, [nameAnimState, nameAnimTimeline]);
 
     return (
       <div
@@ -148,7 +163,7 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
                 shadowClassName="ts-china-rose-3 md:ts-china-rose-5 lg:ts-china-rose-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
                 ref={firstNameAnimRef}
               >
-                {NAME[nameIdx].first}
+                {NAME[nameAnimState.index].first}
               </TextWithShadow>
               <TextWithShadow
                 variant="heading"
@@ -156,7 +171,7 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
                 shadowClassName="ts-china-rose-3 md:ts-china-rose-5 lg:ts-china-rose-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
                 ref={lastNameAnimRef}
               >
-                {NAME[nameIdx].last}
+                {NAME[nameAnimState.index].last}
               </TextWithShadow>
             </div>
             <p

@@ -14,6 +14,7 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     smoothScroll.polyfill();
+    document.documentElement.scrollTop = 0;
   }, []);
 
   return (

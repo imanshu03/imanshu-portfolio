@@ -1,9 +1,10 @@
 import React, { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 import useWidth from '../../hooks/useWidth';
-import SubText from '../Common/SubText';
-import TextWithShadow from '../Common/TextWithShadow';
+import SectionHeading from '../Common/SectionHeading';
+import gsap from 'gsap';
 import SkillBox from './SkillBox';
+import useTimeline from '../../hooks/useTimeline';
 
 const SKILLS: Array<{ text: string; icon: string | null }> = [
   { text: 'React.js', icon: 'ReactIcon' },
@@ -30,18 +31,17 @@ interface IProps {
 const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
   function SkillsPage(props, wrapperRef) {
     const { className } = props;
+
+    const scrollerWrapperRef = useRef<HTMLDivElement>(null);
     const scrollerRef = useRef<HTMLDivElement>(null);
 
     const { scrollWidth } = useWidth(scrollerRef);
-    const [pauseScroll, setPauseScroll] = useState<boolean>(false);
+    const [pauseScroll, setPauseScroll] = useState<boolean>(true);
+    const masterTimeline = useTimeline();
     const entry = useIntersectionObserver(wrapperRef as any, {
-      freezeOnceVisible: false,
       threshold: 1,
     });
-    const isIntersecting = useMemo(() => {
-      if (entry?.isIntersecting) return true;
-      return false;
-    }, [entry]);
+    const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
     useEffect(() => {
       const head = document.head;
@@ -75,9 +75,31 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
       };
     }, [isIntersecting, pauseScroll]);
 
+    useEffect(() => {
+      if (!masterTimeline) return;
+      masterTimeline.addLabel('content', 0.6);
+      masterTimeline.fromTo(
+        scrollerWrapperRef.current,
+        {
+          opacity: 0,
+          top: -100,
+        },
+        {
+          opacity: 1,
+          top: 0,
+          onComplete: () => setPauseScroll(false),
+        },
+        'content',
+      );
+    }, [masterTimeline]);
+
+    useEffect(() => {
+      if (!masterTimeline) return;
+      if (isIntersecting) masterTimeline?.play();
+    }, [isIntersecting, masterTimeline]);
+
     const onScrollClick = (e: any) => {
-      console.log(e);
-      setPauseScroll(!pauseScroll);
+      setPauseScroll((prev) => !prev);
     };
 
     return (
@@ -85,18 +107,16 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
         className={`flex flex-col flex-nowrap h-auto w-full p-[0.8rem] pt-8 lg:pr-[1.2rem] box-border ${className}`}
         ref={wrapperRef as any}
       >
-        <div className="w-full">
-          <TextWithShadow
-            className="text-LightRose dark:text-white tracking-widest"
-            shadowClassName="ts-deep-ruby-2 md:ts-deep-ruby-3 lg:ts-deep-ruby-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4"
-          >
-            skills
-          </TextWithShadow>
-          <SubText className="text-LightRose dark:text-white">
-            values i can add to the organization
-          </SubText>
-        </div>
-        <div className="w-full overflow-hidden my-4 cursor-pointer">
+        <SectionHeading
+          heading="skills"
+          subHeading="values i can add to the organization"
+          timeline={masterTimeline}
+          variant="secondary"
+        />
+        <div
+          className="w-full overflow-hidden my-4 cursor-pointer relative"
+          ref={scrollerWrapperRef}
+        >
           <div className="flex relative animation-marquee" ref={scrollerRef}>
             <div
               className="flex flex-row flex-nowrap items-center justify-start"
