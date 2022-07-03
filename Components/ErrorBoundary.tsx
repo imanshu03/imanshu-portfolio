@@ -1,5 +1,4 @@
 import React from 'react';
-import Lottie from 'react-lottie';
 import animationData from '../Assets/ErrorLottie.json';
 
 type STATE = {
@@ -29,9 +28,12 @@ class ErrorBoundary extends React.Component<
           preserveAspectRatio: 'xMidYMid slice',
         },
       };
+      const Lottie = React.lazy(() => import('react-lottie'));
       return (
         <main className="flex flex-col items-center justify-center h-[100vh] w-[100vw] bg-white">
-          <Lottie options={defaultOptions} width={500} height={500} />
+          <React.Suspense fallback={<div />}>
+            <Lottie options={defaultOptions} width={500} height={500} />
+          </React.Suspense>
         </main>
       );
     }

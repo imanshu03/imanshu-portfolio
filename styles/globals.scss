@@ -77,3 +77,16 @@ $colors: (
   @include createTextShadows(4);
 }
 
+.animation-marquee {
+  animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  animation-play-state: paused;
+}
+
+.disable-select {
+  user-select:none;
+  -webkit-tap-highlight-color: none;
+  -moz-user-select:none;
+  -webkit-user-select:none;
+  -webkit-touch-callout:none;
+  -ms-user-select:none;
+}

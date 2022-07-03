@@ -37,9 +37,9 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   }, []);
 
   return (
-    <main>
+    <main className="px-0 md:px-[6rem] lg:px-[10rem] xl:px-[15rem] w-[100vw] box-border bg-gray-50 dark:bg-black">
       <div
-        className="flex flex-row flex-nowrap items-center justify-around cursor-pointer absolute top-[0.4rem] right-[0.8rem] lg:right-[1.2rem] z-50 mix-blend-hard-light outline-none focus:outline-none"
+        className="cursor-pointer fixed top-[0.4rem] right-[0.8rem] lg:right-[1.2rem] z-50 mix-blend-hard-light first-letter:outline-none focus:outline-none"
         onClick={onThemeChange}
         ref={themeIconRef}
       >
@@ -49,9 +49,11 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <SunIcon className="w-5 h-5 fill-MacroniCheese" />
         )}
       </div>
-      <ThemeContext.Provider value={toggle ? 'light' : 'dark'}>
-        {children}
-      </ThemeContext.Provider>
+      <div className="drop-shadow-md">
+        <ThemeContext.Provider value={toggle ? 'light' : 'dark'}>
+          {children}
+        </ThemeContext.Provider>
+      </div>
     </main>
   );
 };

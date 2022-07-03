@@ -32,8 +32,6 @@ function useIntersectionObserver(
 
     observer.observe(node);
 
-    if (frozen) observer.disconnect();
-
     return () => observer.disconnect();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

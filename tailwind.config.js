@@ -37,6 +37,9 @@ module.exports = {
 
         LightRose: '#da6784',
       },
+      screens: {
+        betterhover: { raw: '(hover: hover)' },
+      },
     },
   },
   plugins: [],
