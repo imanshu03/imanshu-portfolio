@@ -12,7 +12,7 @@ const useHeight = (ref: RefObject<Element>) => {
     return () => window.removeEventListener('resize', resize);
   }, [ref]);
 
-  return [height];
+  return height;
 };
 
 export default useHeight;

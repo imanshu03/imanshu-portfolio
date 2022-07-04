@@ -2,17 +2,25 @@ import { useState, useEffect } from 'react';
 
 const useWindowSize = () => {
   const [windowSize, setWindowSize] = useState<{
-    width: number | undefined;
-    height: number | undefined;
+    width: number;
+    height: number;
   }>({
-    width: undefined,
-    height: undefined,
+    width: 0,
+    height: 0,
   });
   useEffect(() => {
     function handleResize() {
+      const height = Math.max(
+        document.documentElement.clientHeight || 0,
+        window.innerHeight || 0,
+      );
+      const width = Math.max(
+        document.documentElement.clientWidth || 0,
+        window.innerWidth || 0,
+      );
       setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
+        width,
+        height,
       });
     }
     window.addEventListener('resize', handleResize);
