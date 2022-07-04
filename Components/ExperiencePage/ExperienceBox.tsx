@@ -85,7 +85,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
         >
           <div className="flex flex-row items-center justify-start w-full mt-4">
             {icon && (
-              <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2">
+              <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2 md:mr-4">
                 <Image
                   src={(CompanyLogos as any)[icon]}
                   alt={icon}
@@ -115,8 +115,8 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                 className="text-AteneoBlue dark:text-PastelPink text-xs md:text-sm lowercase font-light italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4"
                 onClick={onExpandToggle}
               >
-                {isExpanded ? 'show less' : 'show more'}
-                &nbsp;&nbsp;
+                {isExpanded ? 'hide' : 'show'}
+                &nbsp;responsibilities&nbsp;&nbsp;
                 <ShowLess
                   className="inline w-3 h-3 transition-[transform] ease-in-out duration-[400ms]"
                   style={isExpanded ? {} : { transform: 'rotate(180deg)' }}
