@@ -125,7 +125,9 @@ const ExperienceBox: React.FC<IProps> = (props) => {
               <div
                 className="overflow-hidden pl-4 box-border origin-top transition-[height] ease-in-out duration-[400ms]"
                 style={
-                  isExpanded ? { height: `${listHeight}px` } : { height: '0px' }
+                  isExpanded
+                    ? { height: `${listHeight + 10}px` }
+                    : { height: '0px' }
                 }
               >
                 <ul
@@ -133,7 +135,9 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                   ref={listRef}
                 >
                   {responsibilities.map((e, key) => (
-                    <li key={key}>{e}</li>
+                    <li key={key} className="mt-1 md:mt-2">
+                      {e}
+                    </li>
                   ))}
                 </ul>
               </div>
