@@ -133,10 +133,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
     };
 
     return (
-      <div
-        className={`flex flex-col flex-nowrap box-border ${className}`}
-        ref={wrapperRef as any}
-      >
+      <div className={`${className}`} ref={wrapperRef as any}>
         <SectionHeading
           heading="skills"
           subHeading="values i can add to the organization"

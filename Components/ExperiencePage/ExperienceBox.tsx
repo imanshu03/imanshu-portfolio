@@ -7,14 +7,16 @@ import ShowLess from '@assets/ShowLess';
 import useHeight from '@hooks/useHeight';
 
 interface IProps {
-  company: string;
-  icon: string;
-  startDate: string;
-  endDate?: string;
-  isPartTime?: boolean;
-  designation: string;
-  location: string;
-  responsibilities?: string[];
+  data: {
+    company: string;
+    icon: string;
+    startDate: string;
+    endDate?: string;
+    isPartTime?: boolean;
+    designation: string;
+    location: string;
+    responsibilities?: string[];
+  };
   isLast?: boolean;
   timeline: GSAPTimeline | null;
   index: number;
@@ -22,14 +24,16 @@ interface IProps {
 
 const ExperienceBox: React.FC<IProps> = (props) => {
   const {
-    company,
-    icon,
-    startDate,
-    endDate,
-    isPartTime,
-    designation,
-    location,
-    responsibilities,
+    data: {
+      company,
+      icon,
+      startDate,
+      endDate,
+      isPartTime,
+      designation,
+      location,
+      responsibilities,
+    },
     isLast,
     timeline,
     index,

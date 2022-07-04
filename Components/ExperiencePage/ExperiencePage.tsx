@@ -27,10 +27,7 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
     }, [isIntersecting, masterTimeline]);
 
     return (
-      <div
-        className={`flex flex-col flex-nowrap w-full box-border ${className}`}
-        ref={wrapperRef as any}
-      >
+      <div className={`${className}`} ref={wrapperRef as any}>
         <SectionHeading
           heading="experience"
           subHeading="i love what i do"

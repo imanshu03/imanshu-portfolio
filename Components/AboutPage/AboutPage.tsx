@@ -156,10 +156,7 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
     }, [isIntersecting, masterTimeline]);
 
     return (
-      <div
-        className={`flex flex-col flex-nowrap box-border ${className}`}
-        ref={wrapperRef as any}
-      >
+      <div className={`${className}`} ref={wrapperRef as any}>
         <div className="w-full h-min flex flex-col items-center justify-center relative">
           <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
             <div
@@ -190,7 +187,7 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
           </div>
           <div className="w-full flex flex-col items-center justify-center order-2">
             <p
-              className="text-AteneoBlue dark:text-PastelPink text-2xl md:text-3xl lg:text-4xl relative"
+              className="text-AteneoBlue dark:text-PastelPink text-xl md:text-2xl lg:text-3xl relative"
               ref={greetAnimRef}
             >
               hi, i am
@@ -214,10 +211,10 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
               </TextWithShadow>
             </div>
             <p
-              className="text-AteneoBlue dark:text-PastelPink relative text-2xl md:text-3xl lg:text-4xl"
+              className="text-AteneoBlue dark:text-PastelPink relative text-xl md:text-2xl lg:text-3xl text-center"
               ref={tagLineAnimRef}
             >
-              a frontend engineer
+              an average frontend dev next door
             </p>
           </div>
         </div>
