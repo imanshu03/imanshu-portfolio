@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { forwardRef } from 'react';
-import TextWithShadow from '@common/TextWithShadow';
-import SubText from '@common/SubText';
 import useTimeline from '@hooks/useTimeline';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import SectionHeading from '@common/SectionHeading';
+import details from './details.json';
+import ExperienceBox from './ExperienceBox';
 
 interface IProps {
   className: string;
@@ -28,7 +28,7 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
 
     return (
       <div
-        className={`flex flex-col flex-nowrap h-[100vh] md:h-[100vh] w-full p-[0.8rem] pt-8 lg:pr-[1.2rem] box-border ${className}`}
+        className={`flex flex-col flex-nowrap w-full box-border ${className}`}
         ref={wrapperRef as any}
       >
         <SectionHeading
@@ -37,6 +37,17 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
           timeline={masterTimeline}
           variant="primary"
         />
+        <div className="flex flex-col items-center justify-center my-6 md:my-8 lg:my-10">
+          {details.workExperience.map((item, index) => (
+            <ExperienceBox
+              key={index}
+              {...item}
+              isLast={index === details.workExperience.length - 1}
+              timeline={masterTimeline}
+              index={index}
+            />
+          ))}
+        </div>
       </div>
     );
   },

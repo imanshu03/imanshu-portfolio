@@ -1,28 +1,30 @@
 {
   "workExperience": [
     {
-      "company": "cred",
+      "company": "Cred",
       "icon": "cred",
       "startDate": "May, 2022",
       "designation": "Frontend Engineer",
       "location": "Bengaluru, India"
     },
     {
-      "company": "disney+ hotstar",
+      "company": "Disney+ Hotstar",
       "icon": "hotstar",
       "startDate": "February, 2022",
       "endDate": "May, 2022",
       "isPartTime": true,
       "designation": "SDE-2, Frontend",
-      "location": "Bengaluru, India",
-      "description": "Implemented Chrome Cast Receiver application for Hotstar using React and CAF framework."
+      "location": "Gurgaon, India",
+      "responsibilities": [
+        "Implemented Chrome Cast Receiver application for Hotstar using React and CAF framework."
+      ]
     },
     {
-      "company": "paytm payments bank",
+      "company": "Paytm Payments Bank",
       "icon": "ppbl",
       "startDate": "February, 2021",
       "endDate": "February, 2022",
-      "designation": "software engineer",
+      "designation": "SE, Frontend",
       "location": "Noida, India",
       "responsibilities": [
         "Design and develop new features/requirements by translating given Wire-frames into Web Components that meets markup standards, cross-browser compatibility, usability principles and accessibility.",
@@ -38,7 +40,7 @@
       "icon": "gl",
       "startDate": "October, 2019",
       "endDate": "January, 2021",
-      "designation": "associate software engineer",
+      "designation": "ASE, Frontend",
       "location": "Noida, India",
       "responsibilities": [
         "Designed and developed the Web Application where user can compare and purchase insurance plans for their pets for a pet insurance company, PetPlan.",
