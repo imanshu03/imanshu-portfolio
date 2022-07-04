@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
 import { Power2 } from 'gsap';
-import Timeline from './Timeline';
+import Timeline from '@common/Timeline';
 import * as CompanyLogos from '@assets/Company';
 import Image from 'next/image';
 import ShowLess from '@assets/ShowLess';
@@ -72,7 +72,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
   return (
     <div className="flex flex-row w-full h-[inherit]">
       <Timeline isLast={isLast} timeline={timeline} index={index} />
-      <div className="w-full pb-10 md:pb-[3rem] lg:pb-[3.5rem]">
+      <div className="w-full pb-6 md:pb-8 lg:pb-10">
         <p
           className="text-AteneoBlue dark:text-PastelPink text-xs md:text-sm lowercase font-light italic relative"
           ref={timeRef}
@@ -110,7 +110,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
             </div>
           </div>
           {responsibilities && responsibilities.length > 0 && (
-            <div className="mt-4 flex flex-col items-start">
+            <div className="mt-2 flex flex-col items-start">
               <button
                 className="text-AteneoBlue dark:text-PastelPink text-xs md:text-sm lowercase font-light italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4"
                 onClick={onExpandToggle}

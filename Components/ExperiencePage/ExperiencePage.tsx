@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, memo } from 'react';
 import { forwardRef } from 'react';
 import useTimeline from '@hooks/useTimeline';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
@@ -53,4 +53,4 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
   },
 );
 
-export default React.memo(ExperiencePage);
+export default memo(ExperiencePage);

@@ -4,6 +4,7 @@ import React, {
   useMemo,
   useRef,
   useContext,
+  memo,
 } from 'react';
 import Image from 'next/image';
 import { Power2 } from 'gsap';
@@ -236,4 +237,4 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
   },
 );
 
-export default React.memo(AboutPage);
+export default memo(AboutPage);

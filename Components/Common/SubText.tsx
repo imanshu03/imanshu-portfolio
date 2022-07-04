@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 interface IProps {
   children: React.ReactNode;
@@ -24,4 +24,4 @@ const SubText = forwardRef<React.MutableRefObject<any>, IProps>(
 
 SubText.displayName = 'SubText';
 
-export default SubText;
+export default memo(SubText);

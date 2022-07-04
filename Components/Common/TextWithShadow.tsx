@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 
 type VARIANT_TYPES = 'h1' | 'h2' | 'h3' | 'h4';
 
@@ -43,4 +43,4 @@ const TextWithShadow = forwardRef<React.MutableRefObject<any>, IProps>(
 
 TextWithShadow.displayName = 'TextWithShadow';
 
-export default TextWithShadow;
+export default memo(TextWithShadow);

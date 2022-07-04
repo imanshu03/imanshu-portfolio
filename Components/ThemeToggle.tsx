@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
+import React, { createContext, useEffect, useRef, useState, memo } from 'react';
 import { gsap, Power2 } from 'gsap';
 import MoonIcon from '@assets/MoonIcon';
 import SunIcon from '@assets/SunIcon';
@@ -58,4 +58,4 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   );
 };
 
-export default ThemeToggle;
+export default memo(ThemeToggle);

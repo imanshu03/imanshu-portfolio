@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import * as Icons from '@assets/Skills';
 interface IProps {
   text: string;
@@ -25,4 +25,4 @@ const SkillBox: React.FC<IProps> = (props) => {
   );
 };
 
-export default SkillBox;
+export default memo(SkillBox);

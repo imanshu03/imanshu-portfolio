@@ -1,4 +1,11 @@
-import React, { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
+import React, {
+  forwardRef,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  memo,
+} from 'react';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useWidth from '@hooks/useWidth';
 import SectionHeading from '@common/SectionHeading';
@@ -161,4 +168,4 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
   },
 );
 
-export default React.memo(SkillsPage);
+export default memo(SkillsPage);
