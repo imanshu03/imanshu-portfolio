@@ -20,19 +20,15 @@ class ErrorBoundary extends React.Component<
 
   render() {
     if (this.state.hasError) {
-      const defaultOptions = {
-        loop: true,
-        autoplay: true,
-        animationData: animationData,
-        rendererSettings: {
-          preserveAspectRatio: 'xMidYMid slice',
-        },
-      };
-      const Lottie = React.lazy(() => import('react-lottie'));
+      const Lottie = React.lazy(() => import('lottie-react'));
       return (
         <main className="flex flex-col items-center justify-center h-[100vh] w-[100vw] bg-white">
           <React.Suspense fallback={<div />}>
-            <Lottie options={defaultOptions} width={500} height={500} />
+            <Lottie
+              animationData={animationData}
+              loop={true}
+              className="w-[500px] h-[500px]"
+            />
           </React.Suspense>
         </main>
       );

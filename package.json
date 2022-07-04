@@ -9,25 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-spring/parallax": "^9.4.5",
     "@svgr/webpack": "^6.2.1",
     "gsap": "^3.10.4",
+    "lottie-react": "^2.3.1",
     "next": "12.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-lottie": "^1.2.3",
-    "react-scroll-parallax": "^3.2.0",
     "sass": "^1.53.0",
-    "smoothscroll-polyfill": "^0.4.4",
-    "styled-components": "^5.3.5"
+    "sharp": "^0.30.7",
+    "smoothscroll-polyfill": "^0.4.4"
   },
   "devDependencies": {
     "@types/node": "18.0.0",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.5",
-    "@types/react-lottie": "^1.2.6",
     "@types/smoothscroll-polyfill": "^0.3.1",
-    "@types/styled-components": "^5.1.25",
     "autoprefixer": "^10.4.7",
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6",
