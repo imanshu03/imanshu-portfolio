@@ -57,6 +57,30 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
             left: -${scrollWidth / 2}px;
           }
         }
+        @-webkit-keyframes infinite-marquee {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -${scrollWidth / 2}px;
+          }
+        }
+        @-moz-keyframes infinite-marquee {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -${scrollWidth / 2}px;
+          }
+        }
+        @-ms-keyframes infinite-marquee {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -${scrollWidth / 2}px;
+          }
+        }
       `;
       head.appendChild(style);
     }, [scrollWidth]);
@@ -76,7 +100,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
 
     useEffect(() => {
       if (!masterTimeline) return;
-      masterTimeline.addLabel('content', 0.6);
+      masterTimeline.addLabel('content', 0.4);
       masterTimeline.fromTo(
         scrollerWrapperRef.current,
         {
@@ -103,7 +127,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
 
     return (
       <div
-        className={`flex flex-col flex-nowrap h-auto w-full p-[0.8rem] pt-8 lg:pr-[1.2rem] box-border ${className}`}
+        className={`flex flex-col flex-nowrap box-border ${className}`}
         ref={wrapperRef as any}
       >
         <SectionHeading
@@ -113,7 +137,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
           variant="secondary"
         />
         <div
-          className="w-full overflow-hidden my-4 cursor-pointer relative"
+          className="w-full overflow-hidden my-6 md:my-8 lg:my-10 cursor-pointer relative"
           ref={scrollerWrapperRef}
         >
           <div className="flex relative animation-marquee" ref={scrollerRef}>

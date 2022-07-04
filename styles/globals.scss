@@ -40,7 +40,7 @@ a {
 $colors: (
   "purple-taupe": theme('colors.PurpleTaupe'),
   "deep-ruby": theme('colors.DeepRuby'),
-  "china-rose": #247881,
+  "china-rose": theme('colors.ChinaRose'),
   "yellow-red": theme('colors.YellowRed'),
 
   "gun-metal": theme('colors.GunMetal'),
@@ -86,7 +86,13 @@ $colors: (
 
 .animation-marquee {
   animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -webkit-animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -moz-animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -ms-animation: infinite-marquee 35s linear 0s infinite normal forwards;
   animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
 }
 
 .disable-select {
