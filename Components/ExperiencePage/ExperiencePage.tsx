@@ -38,7 +38,7 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
           {details.workExperience.map((item, index) => (
             <ExperienceBox
               key={index}
-              {...item}
+              data={item}
               isLast={index === details.workExperience.length - 1}
               timeline={masterTimeline}
               index={index}
