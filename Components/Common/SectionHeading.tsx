@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, memo } from 'react';
-import TextWithShadow from './TextWithShadow';
+import TextWithShadow from '@common/TextWithShadow';
 import { Power2 } from 'gsap';
-import SubText from './SubText';
+import SubText from '@common/SubText';
 
 type VARIANT_TYPE = 'primary' | 'secondary';
 
@@ -56,21 +56,21 @@ const SectionHeading: React.FC<IProps> = (props) => {
   } = {
     secondary: {
       className:
-        'text-LightRose dark:text-white tracking-widest relative lowercase',
+        'text-white dark:text-white w-full tracking-widest relative lowercase',
       shadowClassName:
-        'ts-deep-ruby-2 md:ts-deep-ruby-3 lg:ts-deep-ruby-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4',
+        'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4',
     },
     primary: {
       className:
-        'text-YellowRed dark:text-PastelPink w-full tracking-widest lowercase',
+        'text-AteneoBlue dark:text-PastelPink w-full tracking-widest lowercase',
       shadowClassName:
-        'ts-china-rose-2 md:ts-china-rose-3 lg:ts-china-rose-4 dark:ts-deep-ruby-2 dark:md:ts-deep-ruby-3 dark:lg:ts-deep-ruby-4',
+        'ts-wild-blue-2 md:ts-wild-blue-3 lg:ts-wild-blue-4 dark:ts-deep-ruby-2 dark:md:ts-deep-ruby-3 dark:lg:ts-deep-ruby-4',
     },
   };
 
   const subHeadingClass: { [key: string]: string } = {
-    primary: 'text-YellowRed dark:text-PastelPink lowercase',
-    secondary: 'text-LightRose dark:text-white lowercase relative',
+    primary: 'text-AteneoBlue dark:text-PastelPink lowercase relative',
+    secondary: 'text-white dark:text-white lowercase relative',
   };
 
   return (

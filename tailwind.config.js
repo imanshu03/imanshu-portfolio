@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   darkMode: 'class',
@@ -42,5 +43,22 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ matchComponents, theme }) {
+      matchComponents(
+        {
+          'text-stroke': (value) => ({
+            '-webkit-text-stroke-color': value,
+            '-webkit-text-stroke-width': '1px',
+          }),
+          'bg-gradient': (value) => ({
+            background: value,
+            background: `-webkit-linear-gradient(to bottom right, ${value}, ${value})`,
+            background: `linear-gradient(to bottom right, ${value}, ${value})`,
+          }),
+        },
+        { values: theme('colors') },
+      );
+    }),
+  ],
 };

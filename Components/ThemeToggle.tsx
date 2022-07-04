@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useRef, useState } from 'react';
 import { gsap, Power2 } from 'gsap';
-import MoonIcon from '../Assets/MoonIcon';
-import SunIcon from '../Assets/SunIcon';
+import MoonIcon from '@assets/MoonIcon';
+import SunIcon from '@assets/SunIcon';
 
 export const ThemeContext = createContext<string>('dark');
 

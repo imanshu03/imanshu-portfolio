@@ -1,5 +1,5 @@
 import React from 'react';
-import animationData from '../Assets/ErrorLottie.json';
+import animationData from '@assets/ErrorLottie.json';
 
 type STATE = {
   hasError: boolean;

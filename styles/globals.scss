@@ -40,7 +40,7 @@ a {
 $colors: (
   "purple-taupe": theme('colors.PurpleTaupe'),
   "deep-ruby": theme('colors.DeepRuby'),
-  "china-rose": theme('colors.ChinaRose'),
+  "china-rose": #247881,
   "yellow-red": theme('colors.YellowRed'),
 
   "gun-metal": theme('colors.GunMetal'),
@@ -67,7 +67,7 @@ $colors: (
   @each $colorName, $colorValue in $colors {    
     @for $size from 1 through $sizes {
       .ts-#{$colorName}-#{$size} {
-        text-shadow: textShadow(0.25, $size, $colorValue);
+        text-shadow: textShadow(0.1, $size, $colorValue);
       }
     };
   };
@@ -75,6 +75,13 @@ $colors: (
 
 @layer components {
   @include createTextShadows(4);
+
+  .bg-gradient {
+    background: #525252;
+    background: -webkit-linear-gradient(to bottom right, #3d72b4, #525252);
+    background: linear-gradient(to bottom right, #3d72b4, #525252);
+  }
+
 }
 
 .animation-marquee {

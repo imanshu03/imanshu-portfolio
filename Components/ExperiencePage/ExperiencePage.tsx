@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo } from 'react';
 import { forwardRef } from 'react';
-import TextWithShadow from '../Common/TextWithShadow';
-import SubText from '../Common/SubText';
-import useTimeline from '../../hooks/useTimeline';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import SectionHeading from '../Common/SectionHeading';
+import TextWithShadow from '@common/TextWithShadow';
+import SubText from '@common/SubText';
+import useTimeline from '@hooks/useTimeline';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import SectionHeading from '@common/SectionHeading';
 
 interface IProps {
   className: string;

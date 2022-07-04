@@ -1,10 +1,9 @@
 import React, { forwardRef, useEffect, useMemo, useRef, useState } from 'react';
-import useIntersectionObserver from '../../hooks/useIntersectionObserver';
-import useWidth from '../../hooks/useWidth';
-import SectionHeading from '../Common/SectionHeading';
-import gsap from 'gsap';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import useWidth from '@hooks/useWidth';
+import SectionHeading from '@common/SectionHeading';
 import SkillBox from './SkillBox';
-import useTimeline from '../../hooks/useTimeline';
+import useTimeline from '@hooks/useTimeline';
 
 const SKILLS: Array<{ text: string; icon: string | null }> = [
   { text: 'React.js', icon: 'ReactIcon' },

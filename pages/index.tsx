@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import smoothScroll from 'smoothscroll-polyfill';
-import ThemeToggle from '../Components/ThemeToggle';
-import ErrorBoundary from '../Components/ErrorBoundary';
-import SkillsPage from '../Components/SkillsPage';
-import AboutPage from '../Components/AboutPage';
 import { useEffect, useRef } from 'react';
-import ExperiencePage from '../Components/ExperiencePage';
+import smoothScroll from 'smoothscroll-polyfill';
+import ThemeToggle from '@components/ThemeToggle';
+import ErrorBoundary from '@components/ErrorBoundary';
+import SkillsPage from '@components/SkillsPage';
+import AboutPage from '@components/AboutPage';
+import ExperiencePage from '@components/ExperiencePage';
 
 const Home: NextPage = () => {
   const skillsPageRef = useRef(null);
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
         <AboutPage ref={aboutPageRef} className="bg-white dark:bg-EerieBlack" />
         <SkillsPage
           ref={skillsPageRef}
-          className="bg-YellowRed dark:bg-DarkBlue"
+          className="bg-gradient dark:bg-gradient-DarkBlue"
         />
         <ExperiencePage
           ref={experiencePageRef}
