@@ -44,7 +44,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
         top: 0,
         opacity: 1,
       },
-      '>-0.2',
+      '>-0.4',
     );
   }, [timeline]);
 
@@ -79,6 +79,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
         className={headingClass[variant].className}
         shadowClassName={headingClass[variant].shadowClassName}
         ref={headingRef}
+        variant="h2"
       >
         {heading}
       </TextWithShadow>

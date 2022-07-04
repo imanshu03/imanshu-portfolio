@@ -3,7 +3,7 @@ import { gsap, Power2 } from 'gsap';
 import MoonIcon from '@assets/MoonIcon';
 import SunIcon from '@assets/SunIcon';
 
-export const ThemeContext = createContext<string>('dark');
+export const ThemeContext = createContext<string>('light');
 
 const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [toggle, setToggle] = useState<boolean>(true);

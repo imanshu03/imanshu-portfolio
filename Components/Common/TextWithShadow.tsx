@@ -1,17 +1,19 @@
 import React, { forwardRef } from 'react';
 
-type VARIANT_TYPES = 'heading' | 'sectionHeading';
+type VARIANT_TYPES = 'h1' | 'h2' | 'h3' | 'h4';
 
 interface IProps {
-  variant?: VARIANT_TYPES;
   className: string;
   shadowClassName: string;
   children: React.ReactNode;
+  variant?: VARIANT_TYPES;
 }
 
 const FONT_CLASS: { [key in VARIANT_TYPES]: string } = {
-  heading: 'text-6xl md:text-7xl lg:text-8xl relative',
-  sectionHeading: 'text-4xl md:text-5xl lg:text-6xl relative',
+  h1: 'text-6xl md:text-7xl lg:text-8xl relative',
+  h2: 'text-4xl md:text-5xl lg:text-6xl relative',
+  h3: 'text-3xl md:text-4xl lg:text-5xl relative',
+  h4: 'text-2xl md:text-3xl lg:text-4xl relative',
 };
 
 const generateClass: {
@@ -24,18 +26,12 @@ const generateClass: {
 
 const TextWithShadow = forwardRef<React.MutableRefObject<any>, IProps>(
   (props, ref) => {
-    const {
-      variant = 'sectionHeading',
-      className,
-      shadowClassName,
-      children,
-    } = props;
+    const { variant = 'h1', className, shadowClassName, children } = props;
 
-    const elementTag = variant === 'sectionHeading' ? 'h2' : 'h1';
     const derivedClassName = generateClass[variant](className, shadowClassName);
 
     return React.createElement(
-      elementTag,
+      variant,
       {
         className: derivedClassName,
         ref,
