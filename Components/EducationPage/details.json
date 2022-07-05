@@ -1,0 +1,30 @@
+{
+  "education": [
+    {
+      "startDate": "August, 2015",
+      "endDate": "May, 2019",
+      "school": "Seth Jai Prakash Mukand Lal Institue of Engineering and Technology",
+      "degree": "Bachelor of Technology",
+      "stream": "Computer Science Engineering",
+      "location": "Yamunanagar, India",
+      "score": "Percentile - 74.4%"
+    },
+    {
+      "startDate": "March, 2013",
+      "endDate": "April, 2014",
+      "school": "Guru Nanak Khalsa Senior Secondary School",
+      "degree": "Higher Secondary",
+      "stream": "Science",
+      "location": "Chandigarh, India",
+      "score": "Percentile - 81.0%"
+    },
+    {
+      "startDate": "March, 2011",
+      "endDate": "April, 2012",
+      "school": "Bhavan Vidyalaya",
+      "degree": "Matriculation",
+      "location": "Panchkula, India",
+      "score": "CGPA - 9.4"
+    }
+  ]
+}

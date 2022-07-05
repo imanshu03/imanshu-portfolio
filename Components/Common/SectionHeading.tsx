@@ -10,11 +10,11 @@ interface IProps {
   timeline: GSAPTimeline | null;
   heading: string;
   subHeading?: string;
-  variant: VARIANT_TYPE;
+  variant?: VARIANT_TYPE;
 }
 
 const SectionHeading: React.FC<IProps> = (props) => {
-  const { timeline, heading, subHeading, variant } = props;
+  const { timeline, heading, subHeading, variant = 'primary' } = props;
   const headingRef = useRef(null);
   const subHeadingRef = useRef(null);
 
@@ -67,7 +67,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
               variant === 'primary',
           },
           {
-            'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4':
+            'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4':
               variant === 'secondary',
           },
         )}
@@ -79,7 +79,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
       {subHeading && (
         <SubText
           className={clsx(
-            'lowercase relative',
+            'lowercase relative mt-0 md:mt-1 lg:mt-2',
             {
               'text-AteneoBlue dark:text-PastelPink': variant === 'primary',
             },

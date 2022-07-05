@@ -1,18 +1,17 @@
-import React, { useEffect, useMemo, memo } from 'react';
-import { forwardRef } from 'react';
+import SectionHeading from '@components/common/SectionHeading';
+import React, { forwardRef, memo, useMemo, useEffect } from 'react';
+import details from './details.json';
+import EducationBox from './EducationBox';
+import clsx from 'classnames';
 import useTimeline from '@hooks/useTimeline';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import SectionHeading from '@common/SectionHeading';
-import details from './details.json';
-import ExperienceBox from './ExperienceBox';
-import clsx from 'classnames';
 
 interface IProps {
   className: string;
 }
 
-const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
-  function ExperiencePage(props, wrapperRef) {
+const EducationPage = forwardRef<React.MutableRefObject<Element>, IProps>(
+  function EducationPage(props, wrapperRef) {
     const { className } = props;
     const masterTimeline = useTimeline();
     const entry = useIntersectionObserver(wrapperRef as any, {
@@ -30,17 +29,17 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
     return (
       <div className={clsx(className)} ref={wrapperRef as any}>
         <SectionHeading
-          heading="experience"
-          subHeading="where i have worked"
+          variant="secondary"
+          heading="education"
+          subHeading="what i have studied"
           timeline={masterTimeline}
-          variant="primary"
         />
         <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
-          {details.workExperience.map((item, index) => (
-            <ExperienceBox
+          {details.education.map((item, index) => (
+            <EducationBox
               key={index}
               data={item}
-              isLast={index === details.workExperience.length - 1}
+              isLast={index === details.education.length - 1}
               timeline={masterTimeline}
               index={index}
             />
@@ -51,4 +50,4 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
   },
 );
 
-export default memo(ExperiencePage);
+export default memo(EducationPage);

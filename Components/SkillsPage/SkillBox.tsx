@@ -23,7 +23,7 @@ const SkillBox: React.FC<IProps> = (props) => {
         React.createElement((Icons as any)[icon as any], {
           className: 'w-[5rem] h-[5rem] lg:w-[6.5rem] lg:h-[6.5rem] mb-2',
         })}
-      <span className="text-LanguidLavender dark:text-LanguidLavender text-xs md:text-sm lg:text-base text-center w-[7rem] lg:w-[10rem]">
+      <span className="text-white text-xs md:text-sm lg:text-base text-center w-[7rem] lg:w-[10rem]">
         {text}
       </span>
     </div>

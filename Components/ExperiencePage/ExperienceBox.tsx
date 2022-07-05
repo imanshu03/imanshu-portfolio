@@ -99,16 +99,16 @@ const ExperienceBox: React.FC<IProps> = (props) => {
               </div>
             )}
             <div className="flex flex-col items-start justify-between">
-              <h4 className="text-GunMetal dark:text-white text-lg md:text-xl capitalize">
+              <h4 className="text-GunMetal dark:text-EggShell text-lg md:text-xl capitalize">
                 {designation}
               </h4>
-              <h5 className="text-GunMetal dark:text-white text-base md:text-lg capitalize">
+              <h5 className="text-GunMetal dark:text-EggShell text-base md:text-lg capitalize">
                 {company},{' '}
                 <span className="text-xs md:text-sm lg:text-base font-light">
                   ({isPartTime ? 'Part-Time' : 'Full-Time'})
                 </span>
               </h5>
-              <p className="text-GunMetal  dark:text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+              <p className="text-GunMetal  dark:text-EggShell text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
                 {location}
               </p>
             </div>
@@ -135,7 +135,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                 }
               >
                 <ul
-                  className="list-disc text-gray-500 dark:text-EggShell text-xs md:text-sm lg:text-base font-light text-justify"
+                  className="list-disc text-gray-500 dark:text-LanguidLavender text-xs md:text-sm lg:text-base font-light text-justify"
                   ref={listRef}
                 >
                   {responsibilities.map((e, key) => (

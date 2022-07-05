@@ -137,7 +137,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
       <div className={clsx(className)} ref={wrapperRef as any}>
         <SectionHeading
           heading="skills"
-          subHeading="values i can add to the organization"
+          subHeading="what i love to do"
           timeline={masterTimeline}
           variant="secondary"
         />

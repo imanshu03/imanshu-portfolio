@@ -53,7 +53,15 @@ const Timeline: React.FC<IProps> = (props) => {
       />
       {!isLast && (
         <div
-          className="w-[2px] bg-WildBlue dark:bg-DeepRuby absolute left-[0.28rem] top-[0.6rem] h-0"
+          className={clsx(
+            'w-[2px] absolute left-[0.28rem] top-[0.6rem] h-0',
+            {
+              'bg-WildBlue dark:bg-DeepRuby': variant === 'primary',
+            },
+            {
+              'bg-ShadowBlue': variant === 'secondary',
+            },
+          )}
           ref={lineRef}
         />
       )}
