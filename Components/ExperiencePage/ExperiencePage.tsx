@@ -5,6 +5,7 @@ import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import SectionHeading from '@common/SectionHeading';
 import details from './details.json';
 import ExperienceBox from './ExperienceBox';
+import clsx from 'classnames';
 
 interface IProps {
   className: string;
@@ -27,7 +28,7 @@ const ExperiencePage = forwardRef<React.RefObject<Element>, IProps>(
     }, [isIntersecting, masterTimeline]);
 
     return (
-      <div className={`${className}`} ref={wrapperRef as any}>
+      <div className={clsx(className)} ref={wrapperRef as any}>
         <SectionHeading
           heading="experience"
           subHeading="i love what i do"

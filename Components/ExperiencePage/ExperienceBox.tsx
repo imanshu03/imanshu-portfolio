@@ -78,7 +78,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
       <Timeline isLast={isLast} timeline={timeline} index={index} />
       <div className="w-full pb-6 md:pb-8 lg:pb-10">
         <p
-          className="text-AteneoBlue dark:text-PastelPink text-xs md:text-sm lowercase font-light italic relative"
+          className="text-AteneoBlue dark:text-PastelPink text-[0.75rem] md:text-[0.875m] leading-[0.7rem] lowercase font-light italic"
           ref={timeRef}
         >
           {startDate} - {endDate ?? 'Present'}
@@ -108,7 +108,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                   ({isPartTime ? 'Part-Time' : 'Full-Time'})
                 </span>
               </h5>
-              <p className="text-gray-500  dark:text-EggShell text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+              <p className="text-GunMetal  dark:text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
                 {location}
               </p>
             </div>

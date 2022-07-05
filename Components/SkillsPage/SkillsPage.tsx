@@ -11,6 +11,7 @@ import useWidth from '@hooks/useWidth';
 import SectionHeading from '@common/SectionHeading';
 import SkillBox from './SkillBox';
 import useTimeline from '@hooks/useTimeline';
+import clsx from 'classnames';
 
 const SKILLS: Array<{ text: string; icon: string | null }> = [
   { text: 'React.js', icon: 'ReactIcon' },
@@ -133,7 +134,7 @@ const SkillsPage = forwardRef<React.RefObject<Element>, IProps>(
     };
 
     return (
-      <div className={`${className}`} ref={wrapperRef as any}>
+      <div className={clsx(className)} ref={wrapperRef as any}>
         <SectionHeading
           heading="skills"
           subHeading="values i can add to the organization"

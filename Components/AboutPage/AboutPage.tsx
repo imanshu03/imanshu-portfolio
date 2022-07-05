@@ -6,6 +6,7 @@ import React, {
   useContext,
   memo,
 } from 'react';
+import clsx from 'classnames';
 import Image from 'next/image';
 import { Power2 } from 'gsap';
 import TextWithShadow from '@common/TextWithShadow';
@@ -156,7 +157,7 @@ const AboutPage = forwardRef<React.RefObject<Element>, IProps>(
     }, [isIntersecting, masterTimeline]);
 
     return (
-      <div className={`${className}`} ref={wrapperRef as any}>
+      <div className={clsx(className)} ref={wrapperRef as any}>
         <div className="w-full h-min flex flex-col items-center justify-center relative">
           <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
             <div

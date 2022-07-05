@@ -1,14 +1,16 @@
 import { Power2 } from 'gsap';
 import React, { useRef, useEffect, memo } from 'react';
+import clsx from 'classnames';
 
 interface IProps {
   isLast?: boolean;
   timeline: GSAPTimeline | null;
   index: number;
+  variant?: 'primary' | 'secondary';
 }
 
 const Timeline: React.FC<IProps> = (props) => {
-  const { isLast, timeline, index } = props;
+  const { isLast, timeline, index, variant = 'primary' } = props;
   const dotRef = useRef(null);
   const lineRef = useRef(null);
 
@@ -24,15 +26,17 @@ const Timeline: React.FC<IProps> = (props) => {
         { opacity: 1 },
         'showTimeline',
       );
-      timeline.fromTo(
-        lineRef.current,
-        {
-          height: 0,
-          ease: Power2.easeOut,
-        },
-        { height: 'calc(100% - 0.6rem)' },
-        'showTimeline+=0.1',
-      );
+      if (lineRef.current) {
+        timeline.fromTo(
+          lineRef.current,
+          {
+            height: 0,
+            ease: Power2.easeOut,
+          },
+          { height: 'calc(100% - 0.6rem)' },
+          'showTimeline+=0.1',
+        );
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeline]);
@@ -40,7 +44,11 @@ const Timeline: React.FC<IProps> = (props) => {
   return (
     <div className="mr-2 md:mr-4 relative w-[2rem]">
       <div
-        className="w-[0.4rem] h-[0.4rem] bg-transparent border-2 border-AteneoBlue dark:border-PastelPink absolute z-10 box-content rounded-[50%]"
+        className={clsx(
+          'w-[0.4rem] h-[0.4rem] bg-transparent border-2 absolute z-10 box-content rounded-[50%]',
+          { 'border-AteneoBlue dark:border-PastelPink': variant === 'primary' },
+          { 'border-white': variant === 'secondary' },
+        )}
         ref={dotRef}
       />
       {!isLast && (

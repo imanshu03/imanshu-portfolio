@@ -2,6 +2,7 @@ import React, { useEffect, useRef, memo } from 'react';
 import TextWithShadow from '@common/TextWithShadow';
 import { Power2 } from 'gsap';
 import SubText from '@common/SubText';
+import clsx from 'classnames';
 
 type VARIANT_TYPE = 'primary' | 'secondary';
 
@@ -48,43 +49,47 @@ const SectionHeading: React.FC<IProps> = (props) => {
     );
   }, [timeline]);
 
-  const headingClass: {
-    [key: string]: {
-      className: string;
-      shadowClassName: string;
-    };
-  } = {
-    secondary: {
-      className:
-        'text-white dark:text-white w-full tracking-widest relative lowercase',
-      shadowClassName:
-        'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4',
-    },
-    primary: {
-      className:
-        'text-AteneoBlue dark:text-PastelPink w-full tracking-widest lowercase',
-      shadowClassName:
-        'ts-wild-blue-2 md:ts-wild-blue-3 lg:ts-wild-blue-4 dark:ts-deep-ruby-2 dark:md:ts-deep-ruby-3 dark:lg:ts-deep-ruby-4',
-    },
-  };
-
-  const subHeadingClass: { [key: string]: string } = {
-    primary: 'text-AteneoBlue dark:text-PastelPink lowercase relative',
-    secondary: 'text-white dark:text-white lowercase relative',
-  };
-
   return (
     <div className="w-full">
       <TextWithShadow
-        className={headingClass[variant].className}
-        shadowClassName={headingClass[variant].shadowClassName}
+        className={clsx(
+          'w-full tracking-widest relative lowercase',
+          {
+            'text-AteneoBlue dark:text-PastelPink': variant === 'primary',
+          },
+          {
+            'text-white dark:text-white': variant === 'secondary',
+          },
+        )}
+        shadowClassName={clsx(
+          {
+            'ts-wild-blue-2 md:ts-wild-blue-3 lg:ts-wild-blue-4 dark:ts-deep-ruby-2 dark:md:ts-deep-ruby-3 dark:lg:ts-deep-ruby-4':
+              variant === 'primary',
+          },
+          {
+            'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4 dark:ts-shadow-blue-2 dark:md:ts-shadow-blue-3 dark:lg:ts-shadow-blue-4':
+              variant === 'secondary',
+          },
+        )}
         ref={headingRef}
         variant="h2"
       >
         {heading}
       </TextWithShadow>
       {subHeading && (
-        <SubText className={subHeadingClass[variant]} ref={subHeadingRef}>
+        <SubText
+          className={clsx(
+            'lowercase relative',
+            {
+              'text-AteneoBlue dark:text-PastelPink': variant === 'primary',
+            },
+            {
+              'text-white dark:text-white lowercase relative':
+                variant === 'secondary',
+            },
+          )}
+          ref={subHeadingRef}
+        >
           {subHeading}
         </SubText>
       )}
