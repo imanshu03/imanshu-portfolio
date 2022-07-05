@@ -11,6 +11,10 @@ import PsIcon from './PsIcon';
 import SassIcon from './SassIcon';
 import ExpressIcon from './ExpressIcon';
 import GitIcon from './GitIcon';
+import StyledIcon from './StyledIcon';
+import TailwindIcon from './TailwindIcon';
+import NextIcon from './NextIcon';
+import GsapIcon from './GsapIcon';
 
 export {
   ReactIcon,
@@ -26,4 +30,8 @@ export {
   ExpressIcon,
   GitIcon,
   ReduxIcon,
+  StyledIcon,
+  TailwindIcon,
+  NextIcon,
+  GsapIcon,
 };

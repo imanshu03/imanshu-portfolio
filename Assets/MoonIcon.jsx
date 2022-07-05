@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MoonIcon: React.FC<any> = (props) => {
+const MoonIcon = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
