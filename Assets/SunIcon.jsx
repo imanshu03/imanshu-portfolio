@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SunIcon: React.FC<any> = (props) => {
+const SunIcon = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
