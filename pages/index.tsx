@@ -11,12 +11,15 @@ interface IProps {
   PageConfig: {
     AppComponents?: Array<{
       Component: string;
+      className?: string;
+      order: number;
       props: any;
     }>;
     defaultMode?: 'light' | 'dark';
     enableToggleMode?: boolean;
     reverseThemeOrder?: boolean;
     disableSessionTheme?: boolean;
+    sortComponentsByOrder?: boolean;
   };
 }
 
@@ -33,6 +36,7 @@ const Home: NextPage<IProps> = (props) => {
       enableToggleMode = true,
       reverseThemeOrder = false,
       disableSessionTheme = false,
+      sortComponentsByOrder = false,
     },
   } = props;
 
@@ -43,6 +47,11 @@ const Home: NextPage<IProps> = (props) => {
     return !reverseThemeOrder ? 'theme2' : 'theme1';
   };
 
+  let PageAppComponents = [...AppComponents];
+  if (sortComponentsByOrder) {
+    PageAppComponents.sort((comp1, comp2) => comp1.order - comp2.order);
+  }
+
   return (
     <ErrorBoundary>
       <ThemeToggle
@@ -50,7 +59,7 @@ const Home: NextPage<IProps> = (props) => {
         enableToggleMode={enableToggleMode}
         disableSessionTheme={disableSessionTheme}
       >
-        {AppComponents.map((pageItem, index) => {
+        {PageAppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];
           if (Component) {
             return (
@@ -59,7 +68,7 @@ const Home: NextPage<IProps> = (props) => {
                 pageData={pageItem.props.pageData}
                 className={clsx(
                   `section-${getTheme(index)}`,
-                  pageItem.props.className,
+                  pageItem.className,
                 )}
                 version={getTheme(index)}
               />
@@ -72,10 +81,10 @@ const Home: NextPage<IProps> = (props) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const response = await axios.get(process.env.CONFIG_URL ?? '');
-    return { props: { PageConfig: response.data } };
+    return { props: { PageConfig: response.data }, revalidate: 60 };
   } catch (error) {
     console.log(error);
     return { notFound: true };

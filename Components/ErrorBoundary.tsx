@@ -27,9 +27,12 @@ class ErrorBoundary extends React.Component<
             <Lottie
               animationData={animationData}
               loop={true}
-              className="w-[500px] h-[500px]"
+              className="w-[10rem] h-[10rem] md:w-[15rem] md:h-[15rem] lg:w-[20rem] lg:h-[20rem]"
             />
           </React.Suspense>
+          <p className="p3-size">
+            Something went wrong. Please try again later
+          </p>
         </main>
       );
     }
