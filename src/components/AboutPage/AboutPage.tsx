@@ -158,14 +158,14 @@ const AboutPage: React.FC<IProps> = (props) => {
             <Image
               src={ProfileImage}
               alt="Profile Image"
-              className="rounded-[50%] dark:grayscale w-[100%] h-[100%]"
+              className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
               loading="eager"
             />
             <div className="absolute w-full h-full flex">
               <Image
                 src={ProfileMaskImage}
                 alt="Profile Image"
-                className="rounded-[50%] dark:grayscale w-[100%] h-[100%] absolute left-0 top-0 z-50"
+                className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
                 loading="eager"
               />
             </div>
