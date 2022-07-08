@@ -16,10 +16,10 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["./components/*"],
-      "@common/*": ["./components/common/*"],
-      "@hooks/*": ["./hooks/*"],
-      "@assets/*": ["./assets/*"]
+      "@components/*": ["components/*"],
+      "@common/*": ["components/common/*"],
+      "@hooks/*": ["hooks/*"],
+      "@assets/*": ["assets/*"]
     },
     "declaration": true,
     "sourceMap": true
@@ -28,10 +28,12 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "./components",
-    "./components/common",
-    "./hooks",
-    "./assets"
+    "./components/*",
+    "./components/**/*",
+    "./components/common/*",
+    "./hooks/*",
+    "./assets/*",
+    "./assets/**/*"
   ],
   "exclude": ["node_modules"]
 }
