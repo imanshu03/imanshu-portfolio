@@ -1,0 +1,18 @@
+{
+  "achievements": [
+    {
+      "type": "star",
+      "heading": "Rising Star",
+      "date": "September, 2021",
+      "issuer": "Paytm Payments Bank",
+      "description": "Awarded for outstanding performance, rectifying the architectural issues of the product and improving the overall performance of the application."
+    },
+    {
+      "type": "award",
+      "heading": "30Hacks Hackathon",
+      "date": "December, 2019",
+      "issuer": "GlobalLogic",
+      "description": "Achieved second prize at company wide Hackathon.  Built a Web-Application that predicts the best suitable institute for the students based upon his/her inputs using Machine Learning Model."
+    }
+  ]
+}
