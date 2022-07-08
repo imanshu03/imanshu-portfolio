@@ -51,7 +51,7 @@ $colors: (
 }
 
 @mixin headingColor($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply text-AteneoBlue;
     @apply dark:text-PastelPink;
   } @else {
@@ -60,7 +60,7 @@ $colors: (
 }
 
 @mixin headingShadow($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply ts-wild-blue-3;
     @apply md:ts-wild-blue-4;
     @apply lg:ts-wild-blue-5;
@@ -75,7 +75,7 @@ $colors: (
 }
 
 @mixin sectionHeadingShadow($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply ts-wild-blue-2;
     @apply md:ts-wild-blue-3;
     @apply lg:ts-wild-blue-4;
@@ -90,7 +90,7 @@ $colors: (
 }
 
 @mixin contentColor($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply text-GunMetal;
     @apply dark:text-EggShell;
   } @else {
@@ -99,7 +99,7 @@ $colors: (
 }
 
 @mixin subContentColor($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply text-gray-500;
     @apply dark:text-LanguidLavender;
   } @else {
@@ -108,7 +108,7 @@ $colors: (
 }
 
 @mixin timelineDotColor($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply border-AteneoBlue;
     @apply dark:border-PastelPink;
   } @else {
@@ -117,7 +117,7 @@ $colors: (
 }
 
 @mixin timelineColor($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply bg-WildBlue;
     @apply dark:bg-DeepRuby;
   } @else {
@@ -126,7 +126,7 @@ $colors: (
 }
 
 @mixin svgFill($mode) {
-  @if $mode == 'primary' {
+  @if $mode == 'theme1' {
     @apply fill-AteneoBlue;
     @apply dark:fill-PastelPink;
   } @else {

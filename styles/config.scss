@@ -94,35 +94,35 @@
     @apply dark:bg-EerieBlack;
 
     .hd-color {
-      @include headingColor('primary');
+      @include headingColor('theme1');
     }
 
     .hd-shadow {
-      @include headingShadow('primary');
+      @include headingShadow('theme1');
     }
 
     .sh-shadow {
-      @include sectionHeadingShadow('primary');
+      @include sectionHeadingShadow('theme1');
     }
 
     .p1-color {
-      @include contentColor('primary');
+      @include contentColor('theme1');
     }
 
     .p2-color {
-      @include subContentColor('primary');
+      @include subContentColor('theme1');
     }
 
     .timeline-line {
-      @include timelineColor('primary');
+      @include timelineColor('theme1');
     }
 
     .timeline-dot {
-      @include timelineDotColor('primary');
+      @include timelineDotColor('theme1');
     }
 
     .icon-fill {
-      @include svgFill('primary');
+      @include svgFill('theme1');
     }
   }
 
@@ -132,35 +132,35 @@
     @apply dark:bg-gradient-DarkBlue;
 
     .hd-color {
-      @include headingColor('secondary');
+      @include headingColor('theme2');
     }
 
     .hd-shadow {
-      @include headingShadow('secondary');
+      @include headingShadow('theme2');
     }
 
     .sh-shadow {
-      @include sectionHeadingShadow('secondary');
+      @include sectionHeadingShadow('theme2');
     }
 
     .p1-color {
-      @include contentColor('secondary');
+      @include contentColor('theme2');
     }
 
     .p2-color {
-      @include subContentColor('secondary');
+      @include subContentColor('theme2');
     }
 
     .timeline-line {
-      @include timelineColor('secondary');
+      @include timelineColor('theme2');
     }
 
     .timeline-dot {
-      @include timelineDotColor('secondary');
+      @include timelineDotColor('theme2');
     }
 
     .icon-fill {
-      @include svgFill('secondary');
+      @include svgFill('theme2');
     }
   }
 }
