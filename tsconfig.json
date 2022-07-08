@@ -14,14 +14,20 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
     "paths": {
       "@components/*": ["./components/*"],
       "@common/*": ["./components/common/*"],
       "@hooks/*": ["./hooks/*"],
       "@assets/*": ["./assets/*"]
-    }
+    },
+    "declaration": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "./components/**/*.{ts,tsx}"],
-  "exclude": ["node_modules"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "./components",
+    "./components/common"
+  ],
+  "exclude": ["node_modules"]
 }
