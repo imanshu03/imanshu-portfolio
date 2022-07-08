@@ -14,10 +14,10 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    "baseUrl": "./src",
     "paths": {
       "@components/*": ["components/*"],
-      "@common/*": ["components/common/*"],
+      "@common/*": ["common/*"],
       "@hooks/*": ["hooks/*"],
       "@assets/*": ["assets/*"]
     },
@@ -28,12 +28,13 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "./components/*",
-    "./components/**/*",
-    "./components/common/*",
-    "./hooks/*",
-    "./assets/*",
-    "./assets/**/*"
+    "src",
+    "src/components/*",
+    "src/components/**/*",
+    "src/common/*",
+    "src/hooks/*",
+    "src/assets/*",
+    "src/assets/**/*"
   ],
   "exclude": ["node_modules"]
 }

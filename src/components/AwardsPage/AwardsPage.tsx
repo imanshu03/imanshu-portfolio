@@ -1,7 +1,7 @@
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import React, { useRef, useEffect, useMemo } from 'react';
 import clsx from 'classnames';
-import SectionHeading from '@components/common/SectionHeading';
+import SectionHeading from '@common/SectionHeading';
 import AwardBox from './AwardBox';
 import useTimeline from '@hooks/useTimeline';
 

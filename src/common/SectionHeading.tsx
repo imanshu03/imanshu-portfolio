@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, memo } from 'react';
-import TextWithShadow from '@common/TextWithShadow';
+import TextWithShadow from './TextWithShadow';
 import { Power2 } from 'gsap';
-import SubText from '@common/SubText';
+import SubText from './SubText';
 import clsx from 'classnames';
 
 type VARIANT_TYPE = 'primary' | 'secondary';

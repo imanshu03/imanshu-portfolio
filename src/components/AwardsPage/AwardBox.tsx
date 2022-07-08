@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Power2 } from 'gsap';
 import AwardIcon from '@assets/AwardFill';
 import StarIcon from '@assets/StarIcon';
-import Timeline from '@components/common/Timeline';
+import Timeline from '@common/Timeline';
 
 const icons = {
   award: AwardIcon,

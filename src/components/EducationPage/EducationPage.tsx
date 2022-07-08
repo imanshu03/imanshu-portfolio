@@ -1,4 +1,4 @@
-import SectionHeading from '@components/common/SectionHeading';
+import SectionHeading from '@common/SectionHeading';
 import React, { useRef, memo, useMemo, useEffect } from 'react';
 import EducationBox from './EducationBox';
 import clsx from 'classnames';
