@@ -1,0 +1,174 @@
+@import './mixins.scss';
+
+@layer components {
+  @include createTextShadows(5);
+
+  .bg-gradient {
+    background: #3d72b4;
+    background: -webkit-linear-gradient(to bottom right, #3d72b4, #525252);
+    background: linear-gradient(to bottom right, #3d72b4, #525252);
+  }
+}
+
+.animation-marquee {
+  animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -webkit-animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -moz-animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  -ms-animation: infinite-marquee 35s linear 0s infinite normal forwards;
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+  -moz-animation-play-state: paused;
+  -ms-animation-play-state: paused;
+}
+
+.disable-select {
+  user-select: none;
+  -webkit-tap-highlight-color: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -ms-user-select: none;
+}
+
+.hd1-size {
+  @apply text-6xl;
+  @apply md:text-7xl;
+  @apply lg:text-8xl;
+}
+
+.hd2-size {
+  @apply text-4xl;
+  @apply md:text-5xl;
+  @apply lg:text-6xl;
+}
+
+.hd3-size {
+  @apply text-xl;
+  @apply md:text-2xl;
+  @apply lg:text-3xl;
+}
+
+.hd4-size {
+  @apply text-lg;
+  @apply md:text-xl;
+  @apply lg:text-2xl;
+}
+
+.hd5-size {
+  @apply text-base;
+  @apply md:text-lg;
+  @apply lg:text-xl;
+}
+
+.p1-size {
+  @apply text-base;
+  @apply md:text-lg;
+  @apply lg:text-xl;
+  @apply font-light;
+}
+
+.p2-size {
+  @apply text-sm;
+  @apply md:text-base;
+  @apply lg:text-lg;
+  @apply font-light;
+}
+
+.p3-size {
+  @apply text-xs;
+  @apply md:text-sm;
+  @apply lg:text-base;
+  @apply font-light;
+}
+
+.p4-size {
+  @apply text-xs;
+  @apply md:text-sm;
+  @apply font-light;
+}
+
+.section {
+  &-theme1 {
+    @include sectionConfig;
+    @apply bg-white;
+    @apply dark:bg-EerieBlack;
+
+    .hd-color {
+      @include headingColor('primary');
+    }
+
+    .hd-shadow {
+      @include headingShadow('primary');
+    }
+
+    .sh-shadow {
+      @include sectionHeadingShadow('primary');
+    }
+
+    .p1-color {
+      @include contentColor('primary');
+    }
+
+    .p2-color {
+      @include subContentColor('primary');
+    }
+
+    .timeline-line {
+      @include timelineColor('primary');
+    }
+
+    .timeline-dot {
+      @include timelineDotColor('primary');
+    }
+
+    .icon-fill {
+      @include svgFill('primary');
+    }
+  }
+
+  &-theme2 {
+    @include sectionConfig;
+    @apply bg-gradient;
+    @apply dark:bg-gradient-DarkBlue;
+
+    .hd-color {
+      @include headingColor('secondary');
+    }
+
+    .hd-shadow {
+      @include headingShadow('secondary');
+    }
+
+    .sh-shadow {
+      @include sectionHeadingShadow('secondary');
+    }
+
+    .p1-color {
+      @include contentColor('secondary');
+    }
+
+    .p2-color {
+      @include subContentColor('secondary');
+    }
+
+    .timeline-line {
+      @include timelineColor('secondary');
+    }
+
+    .timeline-dot {
+      @include timelineDotColor('secondary');
+    }
+
+    .icon-fill {
+      @include svgFill('secondary');
+    }
+  }
+}
+
+.min-ht-screen {
+  @apply min-h-screen;
+}
+
+.ht-auto {
+  @apply h-auto;
+}

@@ -11,7 +11,7 @@ const icons = {
 
 interface IProps {
   data: {
-    type?: string;
+    icon?: string;
     heading: string;
     date: string;
     issuer: string;
@@ -24,7 +24,7 @@ interface IProps {
 
 const AwardBox: React.FC<IProps> = (props) => {
   const {
-    data: { type, heading, date, issuer, description },
+    data: { icon, heading, date, issuer, description },
     timeline,
     index,
     isLast,
@@ -62,7 +62,7 @@ const AwardBox: React.FC<IProps> = (props) => {
       <Timeline timeline={timeline} index={index} isLast={isLast} />
       <div className="w-full pb-6 md:pb-8 lg:pb-10">
         <p
-          className="text-AteneoBlue dark:text-PastelPink text-[0.75rem] md:text-[0.875m] leading-[0.7rem] lowercase font-light italic"
+          className="hd-color p4-size !leading-[0.7rem] lowercase italic"
           ref={timeRef}
         >
           {date}
@@ -73,22 +73,16 @@ const AwardBox: React.FC<IProps> = (props) => {
         >
           <div className="flex flex-row items-center justify-start w-full mt-4">
             <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2 md:mr-4">
-              {React.createElement((icons as any)[type ?? 'award'], {
-                className: 'w-full h-full fill-AteneoBlue dark:fill-PastelPink',
+              {React.createElement((icons as any)[icon ?? 'award'], {
+                className: 'w-full h-full icon-fill',
               })}
             </div>
             <div className="flex flex-col items-start justify-between">
-              <h4 className="text-GunMetal dark:text-EggShell text-lg md:text-xl capitalize">
-                {heading}
-              </h4>
-              <p className="text-GunMetal dark:text-EggShell text-sm first-line:lg:text-base capitalize">
-                {issuer}
-              </p>
+              <h4 className="p1-color hd4-size capitalize">{heading}</h4>
+              <p className="p1-color p2-size capitalize">{issuer}</p>
             </div>
           </div>
-          <p className="text-justify mt-2 text-gray-500 dark:text-LanguidLavender text-xs md:text-sm lg:text-base font-light ">
-            {description}
-          </p>
+          <p className="text-justify mt-2 p2-color p3-size">{description}</p>
         </div>
       </div>
     </div>

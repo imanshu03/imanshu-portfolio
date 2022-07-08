@@ -22,6 +22,7 @@ interface IProps {
       responsibilities?: string[];
     }>;
   };
+  version: 'theme1' | 'theme2';
 }
 
 const ExperiencePage: React.FC<IProps> = (props) => {

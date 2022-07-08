@@ -45,22 +45,14 @@ const Timeline: React.FC<IProps> = (props) => {
     <div className="mr-2 md:mr-4 relative w-[2rem]">
       <div
         className={clsx(
-          'w-[0.4rem] h-[0.4rem] bg-transparent border-2 absolute z-10 box-content rounded-[50%]',
-          { 'border-AteneoBlue dark:border-PastelPink': variant === 'primary' },
-          { 'border-white': variant === 'secondary' },
+          'w-[0.4rem] h-[0.4rem] bg-transparent border-2 absolute z-10 box-content rounded-[50%] timeline-dot',
         )}
         ref={dotRef}
       />
       {!isLast && (
         <div
           className={clsx(
-            'w-[2px] absolute left-[0.28rem] top-[0.6rem] h-0',
-            {
-              'bg-WildBlue dark:bg-DeepRuby': variant === 'primary',
-            },
-            {
-              'bg-ShadowBlue': variant === 'secondary',
-            },
+            'w-[2px] absolute left-[0.28rem] top-[0.6rem] h-0 timeline-line',
           )}
           ref={lineRef}
         />

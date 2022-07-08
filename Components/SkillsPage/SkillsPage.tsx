@@ -1,11 +1,4 @@
-import React, {
-  forwardRef,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-  memo,
-} from 'react';
+import React, { useEffect, useMemo, useRef, useState, memo } from 'react';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import useWidth from '@hooks/useWidth';
 import SectionHeading from '@common/SectionHeading';
@@ -20,6 +13,7 @@ interface IProps {
     sectionSubHeadingText?: string;
     skillsData: Array<{ text: string; icon?: string }>;
   };
+  version: 'theme1' | 'theme2';
 }
 
 const SkillsPage: React.FC<IProps> = (props) => {

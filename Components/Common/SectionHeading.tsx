@@ -52,25 +52,8 @@ const SectionHeading: React.FC<IProps> = (props) => {
   return (
     <div className="w-full">
       <TextWithShadow
-        className={clsx(
-          'w-full tracking-widest relative lowercase',
-          {
-            'text-AteneoBlue dark:text-PastelPink': variant === 'primary',
-          },
-          {
-            'text-white dark:text-white': variant === 'secondary',
-          },
-        )}
-        shadowClassName={clsx(
-          {
-            'ts-wild-blue-2 md:ts-wild-blue-3 lg:ts-wild-blue-4 dark:ts-deep-ruby-2 dark:md:ts-deep-ruby-3 dark:lg:ts-deep-ruby-4':
-              variant === 'primary',
-          },
-          {
-            'ts-shadow-blue-2 md:ts-shadow-blue-3 lg:ts-shadow-blue-4':
-              variant === 'secondary',
-          },
-        )}
+        className={clsx('w-full tracking-widest lowercase hd-color')}
+        shadowClassName={clsx('sh-shadow')}
         ref={headingRef}
         variant="h2"
       >
@@ -78,16 +61,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
       </TextWithShadow>
       {subHeading && (
         <SubText
-          className={clsx(
-            'lowercase relative mt-0 md:mt-1 lg:mt-2',
-            {
-              'text-AteneoBlue dark:text-PastelPink': variant === 'primary',
-            },
-            {
-              'text-white dark:text-white lowercase relative':
-                variant === 'secondary',
-            },
-          )}
+          className={clsx('lowercase relative mt-0 md:mt-1 lg:mt-2 hd-color')}
           ref={subHeadingRef}
         >
           {subHeading}

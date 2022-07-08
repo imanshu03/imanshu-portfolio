@@ -63,7 +63,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
       />
       <div className="w-full pb-8 md:pb-10 lg:pb-12">
         <p
-          className="text-white text-[0.75rem] md:text-[0.875m] leading-[0.7rem] lowercase font-light italic"
+          className="hd-color p4-size !leading-[0.7rem] lowercase italic"
           ref={timeRef}
         >
           {startDate} - {endDate ?? 'Present'}
@@ -74,22 +74,20 @@ const ExperienceBox: React.FC<IProps> = (props) => {
         >
           <div className="flex flex-row items-center justify-start w-full mt-4">
             <div className="flex flex-col items-start justify-between">
-              <h4 className="text-white text-lg md:text-xl capitalize">
+              <h4 className="p1-color hd4-size capitalize">
                 {degree}
                 {stream && (
-                  <span className="text-xs md:text-sm lg:text-base font-light block sm:inline ml-0 sm:ml-2">
+                  <span className="p3-size block sm:inline ml-0 sm:ml-2">
                     ({stream})
                   </span>
                 )}
               </h4>
-              <h5 className="text-white text-base md:text-lg capitalize">
-                {school}
-              </h5>
-              <p className="text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+              <h5 className="p1-color hd5-size capitalize">{school}</h5>
+              <p className="p1-color p3-size capitalize mt-[0.1rem] md:mt-0">
                 {location}
               </p>
               {score && (
-                <p className="text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+                <p className="p1-color p3-size capitalize mt-[0.1rem] md:mt-0">
                   {score}
                 </p>
               )}

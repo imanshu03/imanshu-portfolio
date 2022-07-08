@@ -1,0 +1,135 @@
+@function textShadow($precision, $size, $color) {
+  $value: null;
+  $offset: 0;
+  $length: $size * (1 / $precision) - 1;
+
+  @for $i from 0 through $length {
+    $offset: $offset + $precision;
+    $shadow: $offset + px $offset + px $color;
+    $value: append($value, $shadow, comma);
+  }
+
+  @return $value;
+}
+
+$colors: (
+  'purple-taupe': theme('colors.PurpleTaupe'),
+  'deep-ruby': theme('colors.DeepRuby'),
+  'china-rose': theme('colors.ChinaRose'),
+  'yellow-red': theme('colors.YellowRed'),
+  'gun-metal': theme('colors.GunMetal'),
+  'pastel-pink': theme('colors.PastelPink'),
+  'languid-lavender': theme('colors.LanguidLavender'),
+  'wild-blue': theme('colors.WildBlue'),
+  'shadow-blue': theme('colors.ShadowBlue'),
+  'light-silver': theme('colors.LightSilver'),
+  'egg-shell': theme('colors.EggShell'),
+  'champagne': theme('colors.Champagne'),
+  'macroni-cheese': theme('colors.MacroniCheese'),
+  'dark-blue': theme('colors.DarkBlue'),
+  'deep-blue': theme('colors.DeepBlue'),
+  'ateneo-blue': theme('colors.AteneoBlue'),
+  'fawn': theme('colors.Fawn'),
+  'eerie-black': theme('colors.EerieBlack'),
+);
+
+@mixin createTextShadows($sizes) {
+  @each $colorName, $colorValue in $colors {
+    @for $size from 1 through $sizes {
+      .ts-#{$colorName}-#{$size} {
+        text-shadow: textShadow(0.1, $size, $colorValue);
+      }
+    }
+  }
+}
+
+@mixin sectionConfig {
+  @apply w-full;
+  @apply py-[1.4rem];
+  @apply px-[1rem];
+  @apply lg:px-[2rem];
+}
+
+@mixin headingColor($mode) {
+  @if $mode == 'primary' {
+    @apply text-AteneoBlue;
+    @apply dark:text-PastelPink;
+  } @else {
+    @apply text-white;
+  }
+}
+
+@mixin headingShadow($mode) {
+  @if $mode == 'primary' {
+    @apply ts-wild-blue-3;
+    @apply md:ts-wild-blue-4;
+    @apply lg:ts-wild-blue-5;
+    @apply dark:ts-deep-ruby-3;
+    @apply dark:md:ts-deep-ruby-4;
+    @apply dark:lg:ts-deep-ruby-5;
+  } @else {
+    @apply ts-shadow-blue-3;
+    @apply md:ts-shadow-blue-4;
+    @apply lg:ts-shadow-blue-5;
+  }
+}
+
+@mixin sectionHeadingShadow($mode) {
+  @if $mode == 'primary' {
+    @apply ts-wild-blue-2;
+    @apply md:ts-wild-blue-3;
+    @apply lg:ts-wild-blue-4;
+    @apply dark:ts-deep-ruby-2;
+    @apply dark:md:ts-deep-ruby-3;
+    @apply dark:lg:ts-deep-ruby-4;
+  } @else {
+    @apply ts-shadow-blue-2;
+    @apply md:ts-shadow-blue-3;
+    @apply lg:ts-shadow-blue-4;
+  }
+}
+
+@mixin contentColor($mode) {
+  @if $mode == 'primary' {
+    @apply text-GunMetal;
+    @apply dark:text-EggShell;
+  } @else {
+    @apply text-white;
+  }
+}
+
+@mixin subContentColor($mode) {
+  @if $mode == 'primary' {
+    @apply text-gray-500;
+    @apply dark:text-LanguidLavender;
+  } @else {
+    @apply text-white;
+  }
+}
+
+@mixin timelineDotColor($mode) {
+  @if $mode == 'primary' {
+    @apply border-AteneoBlue;
+    @apply dark:border-PastelPink;
+  } @else {
+    @apply border-white;
+  }
+}
+
+@mixin timelineColor($mode) {
+  @if $mode == 'primary' {
+    @apply bg-WildBlue;
+    @apply dark:bg-DeepRuby;
+  } @else {
+    @apply bg-ShadowBlue;
+  }
+}
+
+@mixin svgFill($mode) {
+  @if $mode == 'primary' {
+    @apply fill-AteneoBlue;
+    @apply dark:fill-PastelPink;
+  } @else {
+    @apply fill-white;
+  }
+}

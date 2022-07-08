@@ -78,7 +78,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
       <Timeline isLast={isLast} timeline={timeline} index={index} />
       <div className="w-full pb-6 md:pb-8 lg:pb-10">
         <p
-          className="text-AteneoBlue dark:text-PastelPink text-[0.75rem] md:text-[0.875m] leading-[0.7rem] lowercase font-light italic"
+          className="hd-color p4-size lowercase italic !leading-[0.7rem]"
           ref={timeRef}
         >
           {startDate} - {endDate ?? 'Present'}
@@ -99,16 +99,14 @@ const ExperienceBox: React.FC<IProps> = (props) => {
               </div>
             )}
             <div className="flex flex-col items-start justify-between">
-              <h4 className="text-GunMetal dark:text-EggShell text-lg md:text-xl capitalize">
-                {designation}
-              </h4>
-              <h5 className="text-GunMetal dark:text-EggShell text-base md:text-lg capitalize">
+              <h4 className="p1-color hd4-size capitalize">{designation}</h4>
+              <h5 className="p1-color hd5-size capitalize">
                 {company},{' '}
-                <span className="text-xs md:text-sm lg:text-base font-light">
+                <span className="p3-size">
                   ({isPartTime ? 'Part-Time' : 'Full-Time'})
                 </span>
               </h5>
-              <p className="text-GunMetal  dark:text-EggShell text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+              <p className="p1-color p3-size capitalize mt-[0.1rem]">
                 {location}
               </p>
             </div>
@@ -116,7 +114,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
           {responsibilities && responsibilities.length > 0 && (
             <div className="mt-2 flex flex-col items-start">
               <button
-                className="text-AteneoBlue dark:text-PastelPink text-xs md:text-sm lowercase font-light italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4"
+                className="hd-color p4-size lowercase italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4"
                 onClick={onExpandToggle}
               >
                 {isExpanded ? 'hide' : 'show'}
@@ -135,7 +133,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                 }
               >
                 <ul
-                  className="list-disc text-gray-500 dark:text-LanguidLavender text-xs md:text-sm lg:text-base font-light text-justify"
+                  className="list-disc p2-color p3-size text-justify"
                   ref={listRef}
                 >
                   {responsibilities.map((e, key) => (

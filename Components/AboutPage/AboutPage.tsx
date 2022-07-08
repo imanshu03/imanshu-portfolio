@@ -21,10 +21,11 @@ interface IProps {
     tagLine?: string;
     description?: string[];
   };
+  version: 'theme1' | 'theme2';
 }
 
 const AboutPage: React.FC<IProps> = (props) => {
-  const { className, pageData } = props;
+  const { className, pageData, version } = props;
   const wrapperRef = useRef(null);
   const entry = useIntersectionObserver(wrapperRef, { threshold: 0.2 });
   const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
@@ -33,13 +34,13 @@ const AboutPage: React.FC<IProps> = (props) => {
   const theme = useContext(ThemeContext);
   const { View: RocketLottie } = useLottie({
     loop: true,
-    animationData: theme === 'light' ? RocketBlue : RocketWhite,
+    animationData:
+      theme === 'light' && version !== 'theme2' ? RocketBlue : RocketWhite,
     autoplay: true,
   });
 
   // animation timelines
   const masterTimeline = useTimeline();
-  const imageAnimTimeline = useTimeline();
 
   // refs for animation
   const greetAnimRef = useRef(null);
@@ -178,18 +179,15 @@ const AboutPage: React.FC<IProps> = (props) => {
         </div>
         <div className="w-full flex flex-col items-center justify-center order-2">
           {pageData.greetLine && (
-            <p
-              className="text-AteneoBlue dark:text-PastelPink text-xl md:text-2xl lg:text-3xl relative"
-              ref={greetAnimRef}
-            >
+            <p className="hd3-size hd-color lowercase" ref={greetAnimRef}>
               {pageData.greetLine}
             </p>
           )}
           <div className="flex flex-col items-center justify-center mb-3">
             <TextWithShadow
               variant="h1"
-              className="text-AteneoBlue dark:text-PastelPink tracking-wide"
-              shadowClassName="ts-wild-blue-3 md:ts-wild-blue-5 lg:ts-wild-blue-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
+              className="hd-color lowercase tracking-wide"
+              shadowClassName="hd-shadow"
               ref={firstNameAnimRef}
             >
               {pageData.firstName}
@@ -197,8 +195,8 @@ const AboutPage: React.FC<IProps> = (props) => {
             {pageData.lastName && (
               <TextWithShadow
                 variant="h1"
-                className="text-AteneoBlue dark:text-PastelPink tracking-wide"
-                shadowClassName="ts-wild-blue-3 md:ts-wild-blue-5 lg:ts-wild-blue-5 dark:ts-deep-ruby-3 dark:md:ts-deep-ruby-4 dark:lg:ts-deep-ruby-5"
+                className="hd-color lowercase tracking-wide"
+                shadowClassName="hd-shadow"
                 ref={lastNameAnimRef}
               >
                 {pageData.lastName}
@@ -206,10 +204,7 @@ const AboutPage: React.FC<IProps> = (props) => {
             )}
           </div>
           {pageData.tagLine && (
-            <p
-              className="text-AteneoBlue dark:text-PastelPink relative text-xl md:text-2xl lg:text-3xl text-center"
-              ref={tagLineAnimRef}
-            >
+            <p className="hd3-size hd-color lowercase" ref={tagLineAnimRef}>
               {pageData.tagLine}
             </p>
           )}
@@ -217,11 +212,14 @@ const AboutPage: React.FC<IProps> = (props) => {
       </div>
 
       {pageData.description && pageData.description.length > 0 && (
-        <p className="text-justify mt-2 md:mt-4 lg:mt-6" ref={introAnimRef}>
+        <p
+          className="text-justify p1-color p1-size mt-2 md:mt-4 lg:mt-6"
+          ref={introAnimRef}
+        >
           {pageData.description.map((text, idx) => (
             <span
               key={idx}
-              className="text-GunMetal dark:text-EggShell text-base md:text-lg lg:text-xl relative mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block font-light"
+              className="mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block"
             >
               {text}
             </span>

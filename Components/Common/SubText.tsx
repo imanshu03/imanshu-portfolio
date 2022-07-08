@@ -11,13 +11,7 @@ const SubText = forwardRef<React.MutableRefObject<any>, IProps>(
     const { children, className } = props;
 
     return (
-      <h3
-        className={clsx(
-          'text-xl md:text-2xl lg:text-3xl font-light',
-          className,
-        )}
-        ref={ref as any}
-      >
+      <h3 className={clsx('hd3-size font-light', className)} ref={ref as any}>
         {children}
       </h3>
     );

@@ -24,10 +24,11 @@ const Home: NextPage<{ PageConfig: any[] }> = ({ PageConfig }) => {
                 key={pageItem.Component}
                 pageData={pageItem.props.pageData}
                 className={clsx(
-                  { 'section-primary': index % 2 === 0 },
-                  { 'section-secondary': index % 2 !== 0 },
+                  { 'section-theme1': index % 2 === 0 },
+                  { 'section-theme2': index % 2 !== 0 },
                   pageItem.props.className,
                 )}
+                version={index % 2 === 0 ? 'theme1' : 'theme2'}
               />
             );
           }

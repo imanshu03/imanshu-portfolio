@@ -18,6 +18,7 @@ interface IProps {
       description: string;
     }>;
   };
+  version: 'theme1' | 'theme2';
 }
 
 const AwardsPage: React.FC<IProps> = (props) => {

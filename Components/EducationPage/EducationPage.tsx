@@ -20,6 +20,7 @@ interface IProps {
       score?: string;
     }>;
   };
+  version: 'theme1' | 'theme2';
 }
 
 const EducationPage: React.FC<IProps> = (props) => {
