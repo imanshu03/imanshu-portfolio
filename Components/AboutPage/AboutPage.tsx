@@ -70,7 +70,7 @@ const AboutPage: React.FC<IProps> = (props) => {
     masterTimeline.fromTo(
       imageAnimRef.current,
       {
-        top: '-30%',
+        top: '-100px',
         opacity: 0,
         ease: Power2.easeOut,
       },
