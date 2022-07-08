@@ -5,9 +5,9 @@ import EducationPage from './EducationPage';
 import AwardsPage from './AwardsPage';
 
 export const PageComponents = {
-  AboutPage,
-  SkillsPage,
-  ExperiencePage,
-  EducationPage,
-  AwardsPage,
+  AboutPage: AboutPage as any,
+  SkillsPage: SkillsPage as any,
+  ExperiencePage: ExperiencePage as any,
+  EducationPage: EducationPage as any,
+  AwardsPage: AwardsPage as any,
 };
