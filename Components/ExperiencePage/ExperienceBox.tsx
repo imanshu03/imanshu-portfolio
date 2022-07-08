@@ -9,7 +9,7 @@ import useHeight from '@hooks/useHeight';
 interface IProps {
   data: {
     company: string;
-    icon: string;
+    icon?: string;
     startDate: string;
     endDate?: string;
     isPartTime?: boolean;

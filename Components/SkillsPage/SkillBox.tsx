@@ -4,7 +4,7 @@ import clsx from 'classnames';
 
 interface IProps {
   text: string;
-  icon: string | null;
+  icon?: string;
 }
 
 const SkillBox: React.FC<IProps> = (props) => {

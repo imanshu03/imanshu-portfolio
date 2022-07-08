@@ -1,53 +1,69 @@
 import SectionHeading from '@components/common/SectionHeading';
-import React, { forwardRef, memo, useMemo, useEffect } from 'react';
-import details from './details.json';
+import React, { useRef, memo, useMemo, useEffect } from 'react';
 import EducationBox from './EducationBox';
 import clsx from 'classnames';
 import useTimeline from '@hooks/useTimeline';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 
 interface IProps {
-  className: string;
+  className?: string;
+  pageData: {
+    sectionHeadingText: string;
+    sectionSubHeadingText?: string;
+    educationData: Array<{
+      startDate: string;
+      endDate?: string;
+      school: string;
+      degree: string;
+      stream?: string;
+      location: string;
+      score?: string;
+    }>;
+  };
 }
 
-const EducationPage = forwardRef<React.MutableRefObject<Element>, IProps>(
-  function EducationPage(props, wrapperRef) {
-    const { className } = props;
-    const masterTimeline = useTimeline();
-    const entry = useIntersectionObserver(wrapperRef as any, {
-      threshold: 0.5,
-    });
-    const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
+const EducationPage: React.FC<IProps> = (props) => {
+  const {
+    className,
+    pageData: { sectionHeadingText, sectionSubHeadingText, educationData },
+  } = props;
+  const wrapperRef = useRef(null);
+  const masterTimeline = useTimeline();
+  const entry = useIntersectionObserver(wrapperRef as any, {
+    threshold: 0.5,
+  });
+  const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
-    useEffect(() => {
-      if (!masterTimeline) return;
-      if (isIntersecting) {
-        masterTimeline.play();
-      }
-    }, [isIntersecting, masterTimeline]);
+  useEffect(() => {
+    if (!masterTimeline) return;
+    if (isIntersecting) {
+      masterTimeline.play();
+    }
+  }, [isIntersecting, masterTimeline]);
 
-    return (
-      <div className={clsx(className)} ref={wrapperRef as any}>
-        <SectionHeading
-          variant="secondary"
-          heading="education"
-          subHeading="what i have studied"
-          timeline={masterTimeline}
-        />
+  return (
+    <div className={clsx(className)} ref={wrapperRef as any}>
+      <SectionHeading
+        variant="secondary"
+        heading={sectionHeadingText}
+        subHeading={sectionSubHeadingText}
+        timeline={masterTimeline}
+      />
+      {educationData && educationData.length > 0 && (
         <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
-          {details.education.map((item, index) => (
+          {educationData.map((item, index) => (
             <EducationBox
               key={index}
               data={item}
-              isLast={index === details.education.length - 1}
+              isLast={index === educationData.length - 1}
               timeline={masterTimeline}
               index={index}
             />
           ))}
         </div>
-      </div>
-    );
-  },
-);
+      )}
+    </div>
+  );
+};
 
 export default memo(EducationPage);

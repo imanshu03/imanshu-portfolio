@@ -1,0 +1,28 @@
+@mixin sectionConfig {
+    @apply w-full;
+    @apply py-[1.4rem];
+    @apply px-[1rem];
+    @apply lg:px-[2rem];
+}
+
+.section {
+    &-primary {
+        @include sectionConfig;
+        @apply bg-white;
+        @apply dark:bg-EerieBlack;
+    }
+
+    &-secondary {
+        @include sectionConfig;
+        @apply bg-gradient;
+        @apply dark:bg-gradient-DarkBlue;
+    }
+}
+
+.min-ht-screen {
+    @apply min-h-screen;
+}
+
+.ht-auto {
+    @apply h-auto;
+}

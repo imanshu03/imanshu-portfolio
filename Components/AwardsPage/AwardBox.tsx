@@ -11,7 +11,7 @@ const icons = {
 
 interface IProps {
   data: {
-    type: string;
+    type?: string;
     heading: string;
     date: string;
     issuer: string;
@@ -73,7 +73,7 @@ const AwardBox: React.FC<IProps> = (props) => {
         >
           <div className="flex flex-row items-center justify-start w-full mt-4">
             <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2 md:mr-4">
-              {React.createElement((icons as any)[type], {
+              {React.createElement((icons as any)[type ?? 'award'], {
                 className: 'w-full h-full fill-AteneoBlue dark:fill-PastelPink',
               })}
             </div>

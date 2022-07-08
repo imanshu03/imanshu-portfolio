@@ -1,19 +1,13 @@
 import type { NextPage } from 'next';
-import { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 import smoothScroll from 'smoothscroll-polyfill';
 import ThemeToggle from '@components/ThemeToggle';
 import ErrorBoundary from '@components/ErrorBoundary';
-import SkillsPage from '@components/SkillsPage';
-import AboutPage from '@components/AboutPage';
-import ExperiencePage from '@components/ExperiencePage';
-import EducationPage from '@components/EducationPage';
+import clsx from 'classnames';
+import { PageComponents } from '@components/PageComponents';
 
-const Home: NextPage = () => {
-  const aboutPageRef = useRef(null);
-  const skillsPageRef = useRef(null);
-  const experiencePageRef = useRef(null);
-  const educationPageRef = useRef(null);
-
+const Home: NextPage<{ PageConfig: any[] }> = ({ PageConfig }) => {
   useEffect(() => {
     smoothScroll.polyfill();
     document.documentElement.scrollTop = 0;
@@ -22,25 +16,36 @@ const Home: NextPage = () => {
   return (
     <ErrorBoundary>
       <ThemeToggle>
-        <AboutPage
-          ref={aboutPageRef}
-          className="bg-white dark:bg-EerieBlack w-full min-h-screen py-[1.4rem] px-[1rem] lg:px-[2rem]"
-        />
-        <SkillsPage
-          ref={skillsPageRef}
-          className="bg-gradient dark:bg-gradient-DarkBlue w-full h-auto py-[1.4rem] px-[1rem] lg:px-[2rem]"
-        />
-        <ExperiencePage
-          ref={experiencePageRef}
-          className="bg-white  dark:bg-EerieBlack w-full min-h-screen py-[1.4rem] px-[1rem] lg:px-[2rem]"
-        />
-        <EducationPage
-          ref={educationPageRef}
-          className="bg-gradient dark:bg-gradient-DarkBlue w-full h-auto py-[1.4rem] px-[1rem] lg:px-[2rem]"
-        />
+        {PageConfig.map((pageItem, index) => {
+          const Component = (PageComponents as any)[pageItem.Component];
+          if (Component) {
+            return (
+              <Component
+                key={pageItem.Component}
+                pageData={pageItem.props.pageData}
+                className={clsx(
+                  { 'section-primary': index % 2 === 0 },
+                  { 'section-secondary': index % 2 !== 0 },
+                  pageItem.props.className,
+                )}
+              />
+            );
+          }
+          return null;
+        })}
       </ThemeToggle>
     </ErrorBoundary>
   );
 };
+
+export async function getServerSideProps() {
+  try {
+    const response = await axios.get(process.env.CONFIG_URL ?? '');
+    return { props: { PageConfig: response.data } };
+  } catch (error) {
+    console.log(error);
+    return { notFound: true };
+  }
+}
 
 export default Home;

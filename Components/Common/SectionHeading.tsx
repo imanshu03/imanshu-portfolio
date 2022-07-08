@@ -20,7 +20,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     if (!timeline) return;
-    timeline.addLabel('sectionHeading', 0);
+    timeline.addLabel('sectionHeadingText', 0);
     timeline.fromTo(
       headingRef.current,
       {
@@ -32,7 +32,7 @@ const SectionHeading: React.FC<IProps> = (props) => {
         top: 0,
         opacity: 1,
       },
-      'sectionHeading',
+      'sectionHeadingText',
     );
     timeline.fromTo(
       subHeadingRef.current,
