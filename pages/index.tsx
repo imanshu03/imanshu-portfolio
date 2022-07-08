@@ -7,16 +7,50 @@ import ErrorBoundary from '@components/ErrorBoundary';
 import clsx from 'classnames';
 import { PageComponents } from '@components/PageComponents';
 
-const Home: NextPage<{ PageConfig: any[] }> = ({ PageConfig }) => {
+interface IProps {
+  PageConfig: {
+    AppComponents?: Array<{
+      Component: string;
+      props: any;
+    }>;
+    defaultMode?: 'light' | 'dark';
+    enableToggleMode?: boolean;
+    reverseThemeOrder?: boolean;
+    disableSessionTheme?: boolean;
+  };
+}
+
+const Home: NextPage<IProps> = (props) => {
   useEffect(() => {
     smoothScroll.polyfill();
     document.documentElement.scrollTop = 0;
   }, []);
 
+  const {
+    PageConfig: {
+      AppComponents = [],
+      defaultMode = 'light',
+      enableToggleMode = true,
+      reverseThemeOrder = false,
+      disableSessionTheme = false,
+    },
+  } = props;
+
+  const getTheme = (index: number) => {
+    if (index % 2 === 0) {
+      return !reverseThemeOrder ? 'theme1' : 'theme2';
+    }
+    return !reverseThemeOrder ? 'theme2' : 'theme1';
+  };
+
   return (
     <ErrorBoundary>
-      <ThemeToggle>
-        {PageConfig.map((pageItem, index) => {
+      <ThemeToggle
+        defaultMode={defaultMode}
+        enableToggleMode={enableToggleMode}
+        disableSessionTheme={disableSessionTheme}
+      >
+        {AppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];
           if (Component) {
             return (
@@ -24,11 +58,10 @@ const Home: NextPage<{ PageConfig: any[] }> = ({ PageConfig }) => {
                 key={pageItem.Component}
                 pageData={pageItem.props.pageData}
                 className={clsx(
-                  { 'section-theme1': index % 2 === 0 },
-                  { 'section-theme2': index % 2 !== 0 },
+                  `section-${getTheme(index)}`,
                   pageItem.props.className,
                 )}
-                version={index % 2 === 0 ? 'theme1' : 'theme2'}
+                version={getTheme(index)}
               />
             );
           }

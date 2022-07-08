@@ -3,29 +3,49 @@ import { gsap, Power2 } from 'gsap';
 import MoonIcon from '@assets/MoonIcon';
 import SunIcon from '@assets/SunIcon';
 
-export const ThemeContext = createContext<string>('light');
+export const ThemeContext = createContext<string>('');
 
-const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [toggle, setToggle] = useState<boolean>(true);
+type MODES = 'dark' | 'light';
+
+interface IProps {
+  children?: React.ReactNode;
+  defaultMode: MODES;
+  enableToggleMode: boolean;
+  disableSessionTheme: boolean;
+}
+
+const ThemeToggle: React.FC<IProps> = (props) => {
+  const { children, defaultMode, enableToggleMode, disableSessionTheme } =
+    props;
+  const [mode, setMode] = useState<MODES>(defaultMode);
   const themeIconRef = useRef<HTMLDivElement>(null);
 
   const onThemeChange = () => {
-    setToggle(!toggle);
+    let newMode: MODES = mode === 'light' ? 'dark' : 'light';
     document.documentElement.classList.toggle('dark');
-    sessionStorage.setItem('theme', !toggle ? 'light' : 'dark');
+    !disableSessionTheme && sessionStorage.setItem('theme', newMode);
+    setMode(newMode);
   };
 
   useEffect(() => {
-    const theme = sessionStorage.getItem('theme');
     document.documentElement.classList.remove(...['light', 'dark']);
-    if (theme && ['light', 'dark'].includes(theme)) {
-      setToggle(theme === 'light');
-      if (theme === 'dark') document.documentElement.classList.add('dark');
+    if (!enableToggleMode) {
+      defaultMode === 'dark' && document.documentElement.classList.add('dark');
+      setMode(defaultMode);
     } else {
-      sessionStorage.removeItem('theme');
-      sessionStorage.setItem('theme', 'light');
-      setToggle(true);
+      const theme = sessionStorage.getItem('theme');
+      if (!disableSessionTheme && theme && ['light', 'dark'].includes(theme)) {
+        theme === 'dark' && document.documentElement.classList.add('dark');
+        setMode(theme as MODES);
+      } else {
+        sessionStorage.removeItem('theme');
+        !disableSessionTheme && sessionStorage.setItem('theme', defaultMode);
+        defaultMode === 'dark' &&
+          document.documentElement.classList.add('dark');
+        setMode(defaultMode);
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -38,21 +58,21 @@ const ThemeToggle: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <main className="px-0 md:px-[6rem] lg:px-[10rem] xl:px-[15rem] w-[100vw] box-border bg-gray-50 dark:bg-black">
-      <div
-        className="cursor-pointer fixed top-[0.4rem] right-[0.8rem] lg:right-[1.2rem] z-50 mix-blend-hard-light first-letter:outline-none focus:outline-none"
-        onClick={onThemeChange}
-        ref={themeIconRef}
-      >
-        {toggle ? (
-          <MoonIcon className="w-5 h-5 fill-DeepBlue" />
-        ) : (
-          <SunIcon className="w-5 h-5 fill-MacroniCheese" />
-        )}
-      </div>
+      {enableToggleMode && (
+        <div
+          className="cursor-pointer fixed top-[0.4rem] right-[0.8rem] lg:right-[1.2rem] z-50 mix-blend-hard-light first-letter:outline-none focus:outline-none"
+          onClick={onThemeChange}
+          ref={themeIconRef}
+        >
+          {mode === 'light' ? (
+            <MoonIcon className="w-5 h-5 fill-DeepBlue" />
+          ) : (
+            <SunIcon className="w-5 h-5 fill-MacroniCheese" />
+          )}
+        </div>
+      )}
       <div className="drop-shadow-md">
-        <ThemeContext.Provider value={toggle ? 'light' : 'dark'}>
-          {children}
-        </ThemeContext.Provider>
+        <ThemeContext.Provider value={mode}>{children}</ThemeContext.Provider>
       </div>
     </main>
   );
