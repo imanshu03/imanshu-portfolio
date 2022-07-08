@@ -88,6 +88,11 @@ const ExperienceBox: React.FC<IProps> = (props) => {
               <p className="text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
                 {location}
               </p>
+              {score && (
+                <p className="text-white text-xs md:text-sm lg:text-base capitalize font-light mt-[0.1rem] md:mt-0">
+                  {score}
+                </p>
+              )}
             </div>
           </div>
         </div>
