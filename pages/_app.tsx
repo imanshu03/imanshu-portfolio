@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>imanshu rathore&apos;s</title>
+        <title>Imanshu Rathore</title>
         <meta name="description" content="imanshu rathore's portfolio" />
         <meta property="og:type" content="website" />
         <meta
@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="Imanshu Rathore's Portfolio"
           key="og:description"
         />
-        <link rel="icon" href="/coding.ico" />
-        <link rel="apple-touch-icon" href="/logo192.png" />
+        <link rel="icon" href="/profile.ico" />
+        <link rel="apple-touch-icon" href="/profile.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
       <Component {...pageProps} />
