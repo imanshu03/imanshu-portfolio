@@ -43,13 +43,6 @@ $colors: (
   }
 }
 
-@mixin sectionConfig {
-  @apply w-full;
-  @apply py-[1.4rem];
-  @apply px-[1rem];
-  @apply lg:px-[2rem];
-}
-
 @mixin headingColor($mode) {
   @if $mode == 'theme1' {
     @apply text-AteneoBlue;

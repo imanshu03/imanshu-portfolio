@@ -62,7 +62,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
       boxRef.current,
       {
         opacity: 0,
-        top: -100,
+        top: 100,
         ease: Power2.easeOut,
       },
       { opacity: 1, top: 0 },

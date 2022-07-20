@@ -36,19 +36,10 @@ const AwardBox: React.FC<IProps> = (props) => {
     if (!timeline) return;
     timeline.addLabel(`showBox_${index}`, (index + 1) * 0.4);
     timeline.fromTo(
-      timeRef.current,
-      {
-        opacity: 0,
-        ease: Power2.easeOut,
-      },
-      { opacity: 1 },
-      `showBox_${index}`,
-    );
-    timeline.fromTo(
       boxRef.current,
       {
         opacity: 0,
-        top: -100,
+        top: 100,
         ease: Power2.easeOut,
       },
       { opacity: 1, top: 0 },
@@ -58,33 +49,25 @@ const AwardBox: React.FC<IProps> = (props) => {
   }, [timeline]);
 
   return (
-    <div className="flex flex-row w-full h-[inherit]">
-      <Timeline timeline={timeline} index={index} isLast={isLast} />
-      <div className="w-full pb-6 md:pb-8 lg:pb-10">
-        <p
-          className="hd-color p4-size !leading-[0.7rem] lowercase italic"
-          ref={timeRef}
-        >
-          {date}
-        </p>
-        <div
-          className="flex flex-col items-start justify-start relative"
-          ref={boxRef}
-        >
-          <div className="flex flex-row items-center justify-start w-full mt-4">
-            <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2 md:mr-4">
-              {React.createElement((icons as any)[icon ?? 'award'], {
-                className: 'w-full h-full icon-fill',
-              })}
-            </div>
-            <div className="flex flex-col items-start justify-between">
-              <h4 className="p1-color hd4-size capitalize">{heading}</h4>
-              <p className="p1-color p2-size capitalize">{issuer}</p>
-            </div>
-          </div>
-          <p className="text-justify mt-2 p2-color p3-size">{description}</p>
+    <div
+      className="flex flex-col items-start justify-start relative w-full h-[inherit] pb-6 md:pb-8 lg:pb-10"
+      ref={boxRef}
+    >
+      <div className="flex flex-row items-center justify-start w-full mt-4">
+        <div className="h-[4.25rem] w-[4.25rem] md:h-[5rem] md:w-[5rem] drop-shadow-md mr-2 md:mr-4">
+          {React.createElement((icons as any)[icon ?? 'award'], {
+            className: 'w-full h-full icon-fill',
+          })}
+        </div>
+        <div className="flex flex-col items-start justify-between">
+          <p className="hd-color p4-size lowercase italic" ref={timeRef}>
+            {date}
+          </p>
+          <h4 className="p1-color hd4-size capitalize">{heading}</h4>
+          <p className="p1-color p2-size capitalize">{issuer}</p>
         </div>
       </div>
+      <p className="text-justify mt-2 p2-color p3-size">{description}</p>
     </div>
   );
 };

@@ -30,41 +30,39 @@ const ExperiencePage: React.FC<IProps> = (props) => {
     className,
     pageData: { sectionHeadingText, sectionSubHeadingText, experienceData },
   } = props;
-  const wrapperRef = useRef(null);
-  const masterTimeline = useTimeline();
-  const entry = useIntersectionObserver(wrapperRef as any, {
-    threshold: 0.5,
-  });
-  const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
-  useEffect(() => {
-    if (!masterTimeline) return;
-    if (isIntersecting) {
-      masterTimeline.play();
-    }
-  }, [isIntersecting, masterTimeline]);
+  const masterTimeline = useTimeline({
+    scrollTrigger: {
+      trigger: '#experience',
+      scrub: 1,
+      start: 'top bottom',
+      end: 'top top',
+    },
+  });
 
   return (
-    <div className={clsx(className)} ref={wrapperRef as any}>
-      <SectionHeading
-        heading={sectionHeadingText}
-        subHeading={sectionSubHeadingText}
-        timeline={masterTimeline}
-        variant="primary"
-      />
-      {experienceData && experienceData.length > 0 && (
-        <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
-          {experienceData.map((item, index) => (
-            <ExperienceBox
-              key={index}
-              data={item}
-              isLast={index === experienceData.length - 1}
-              timeline={masterTimeline}
-              index={index}
-            />
-          ))}
-        </div>
-      )}
+    <div className={clsx(className, 'relative')} id="experience">
+      <div className="pd-section">
+        <SectionHeading
+          heading={sectionHeadingText}
+          subHeading={sectionSubHeadingText}
+          timeline={masterTimeline}
+          variant="primary"
+        />
+        {experienceData && experienceData.length > 0 && (
+          <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
+            {experienceData.map((item, index) => (
+              <ExperienceBox
+                key={index}
+                data={item}
+                isLast={index === experienceData.length - 1}
+                timeline={masterTimeline}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

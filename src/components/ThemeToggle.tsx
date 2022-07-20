@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState, memo } from 'react';
+import React, { createContext, useRef, useState, memo, useEffect } from 'react';
 import { gsap, Power2 } from 'gsap';
 import MoonIcon from '@assets/MoonIcon';
 import SunIcon from '@assets/SunIcon';
@@ -57,7 +57,7 @@ const ThemeToggle: React.FC<IProps> = (props) => {
   }, []);
 
   return (
-    <main className="px-0 md:px-[6rem] lg:px-[10rem] xl:px-[15rem] w-[100vw] box-border bg-gray-50 dark:bg-black">
+    <main className="w-full">
       {enableToggleMode && (
         <div
           className="cursor-pointer fixed top-[0.4rem] right-[0.8rem] lg:right-[1.2rem] z-50 mix-blend-hard-light first-letter:outline-none focus:outline-none"

@@ -6,6 +6,7 @@ import ThemeToggle from '@components/ThemeToggle';
 import ErrorBoundary from '@components/ErrorBoundary';
 import clsx from 'classnames';
 import { PageComponents } from '@components/PageComponents';
+import PageConfig from '../page.json';
 
 interface IProps {
   PageConfig: {
@@ -17,9 +18,7 @@ interface IProps {
     }>;
     defaultMode?: 'light' | 'dark';
     enableToggleMode?: boolean;
-    reverseThemeOrder?: boolean;
     disableSessionTheme?: boolean;
-    sortComponentsByOrder?: boolean;
   };
 }
 
@@ -32,25 +31,17 @@ const Home: NextPage<IProps> = (props) => {
   const {
     PageConfig: {
       AppComponents = [],
-      defaultMode = 'light',
+      defaultMode = 'dark',
       enableToggleMode = true,
-      reverseThemeOrder = false,
       disableSessionTheme = false,
-      sortComponentsByOrder = false,
     },
   } = props;
 
   const getTheme = (index: number) => {
-    if (index % 2 === 0) {
-      return !reverseThemeOrder ? 'theme1' : 'theme2';
-    }
-    return !reverseThemeOrder ? 'theme2' : 'theme1';
+    return index % 2 === 0 ? 'theme1' : 'theme2';
   };
 
   let PageAppComponents = [...AppComponents];
-  if (sortComponentsByOrder) {
-    PageAppComponents.sort((comp1, comp2) => comp1.order - comp2.order);
-  }
 
   return (
     <ErrorBoundary>
@@ -83,10 +74,9 @@ const Home: NextPage<IProps> = (props) => {
 
 export async function getStaticProps() {
   try {
-    const response = await axios.get(process.env.CONFIG_URL ?? '');
-    return { props: { PageConfig: response.data }, revalidate: 60 };
+    // const response = await axios.get(process.env.CONFIG_URL ?? '');
+    return { props: { PageConfig } };
   } catch (error) {
-    console.log(error);
     return { notFound: true };
   }
 }

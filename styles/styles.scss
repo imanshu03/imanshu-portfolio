@@ -87,9 +87,15 @@
   @apply font-light;
 }
 
+.pd-section {
+  @apply py-[1.4rem];
+  @apply px-[1rem];
+  @apply lg:px-[2rem];
+}
+
 .section {
   &-theme1 {
-    @include sectionConfig;
+    @apply w-full;
     @apply bg-white;
     @apply dark:bg-EerieBlack;
 
@@ -127,7 +133,7 @@
   }
 
   &-theme2 {
-    @include sectionConfig;
+    @apply w-full;
     @apply bg-gradient;
     @apply dark:bg-gradient-DarkBlue;
 

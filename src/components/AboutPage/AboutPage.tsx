@@ -11,6 +11,7 @@ import ProfileMaskImage from '@assets/profile-mask.webp';
 import RocketWhite from '@assets/RocketWhite.json';
 import RocketBlue from '@assets/RocketBlue.json';
 import { ThemeContext } from '@components/ThemeToggle';
+import CurveDown from '@assets/CurveDown';
 
 interface IProps {
   className?: string;
@@ -27,7 +28,7 @@ interface IProps {
 const AboutPage: React.FC<IProps> = (props) => {
   const { className, pageData, version } = props;
   const wrapperRef = useRef(null);
-  const entry = useIntersectionObserver(wrapperRef, { threshold: 0.2 });
+  const entry = useIntersectionObserver(wrapperRef);
   const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
   // setting lottie data based upon theme
@@ -40,7 +41,10 @@ const AboutPage: React.FC<IProps> = (props) => {
   });
 
   // animation timelines
-  const masterTimeline = useTimeline();
+  const masterTimeline = useTimeline(
+    {},
+    { enableScrollTrigger: false, pauseOnInit: true },
+  );
 
   // refs for animation
   const greetAnimRef = useRef(null);
@@ -63,8 +67,8 @@ const AboutPage: React.FC<IProps> = (props) => {
 
     masterTimeline.fromTo(
       greetAnimRef.current,
-      { left: 50, opacity: 0, ease: Power2.easeOut },
-      { left: 0, opacity: 1 },
+      { top: 100, opacity: 0, ease: Power2.easeOut },
+      { top: 0, opacity: 1 },
       'greetRef',
     );
     masterTimeline.fromTo(
@@ -148,84 +152,94 @@ const AboutPage: React.FC<IProps> = (props) => {
   }, [isIntersecting, masterTimeline]);
 
   return (
-    <div className={clsx(className)} ref={wrapperRef as any}>
-      <div className="w-full h-min flex flex-col items-center justify-center relative">
-        <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
-          <div
-            className="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] flex relative"
-            ref={imageAnimRef}
-          >
-            <Image
-              src={ProfileImage}
-              alt="Profile Image"
-              className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
-              loading="eager"
-            />
-            <div className="absolute w-full h-full flex">
+    <div
+      className={clsx(className, 'relative')}
+      ref={wrapperRef as any}
+      id="about"
+    >
+      <div className="pd-section">
+        <div className="w-full h-min flex flex-col items-center justify-center relative">
+          <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
+            <div
+              className="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] flex relative"
+              ref={imageAnimRef}
+            >
               <Image
-                src={ProfileMaskImage}
+                src={ProfileImage}
                 alt="Profile Image"
-                className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
+                className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
                 loading="eager"
               />
-            </div>
-            <div
-              className="absolute h-[90%] w-[90%] z-10 right-[-56%] top-[-34%]"
-              ref={rocketLottieRef}
-            >
-              {RocketLottie}
+              <div className="absolute w-full h-full flex">
+                <Image
+                  src={ProfileMaskImage}
+                  alt="Profile Image"
+                  className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
+                  loading="eager"
+                />
+              </div>
+              <div
+                className="absolute h-[90%] w-[90%] z-10 right-[-56%] top-[-34%]"
+                ref={rocketLottieRef}
+              >
+                {RocketLottie}
+              </div>
             </div>
           </div>
-        </div>
-        <div className="w-full flex flex-col items-center justify-center order-2">
-          {pageData.greetLine && (
-            <p className="hd3-size hd-color lowercase" ref={greetAnimRef}>
-              {pageData.greetLine}
-            </p>
-          )}
-          <div className="flex flex-col items-center justify-center mb-3">
-            <TextWithShadow
-              variant="h1"
-              className="hd-color lowercase tracking-wide"
-              shadowClassName="hd-shadow"
-              ref={firstNameAnimRef}
-            >
-              {pageData.firstName}
-            </TextWithShadow>
-            {pageData.lastName && (
+          <div className="w-full flex flex-col items-center justify-center order-2">
+            {pageData.greetLine && (
+              <p
+                className="hd3-size hd-color lowercase relative"
+                ref={greetAnimRef}
+              >
+                {pageData.greetLine}
+              </p>
+            )}
+            <div className="flex flex-col items-center justify-center mb-3">
               <TextWithShadow
                 variant="h1"
                 className="hd-color lowercase tracking-wide"
                 shadowClassName="hd-shadow"
-                ref={lastNameAnimRef}
+                ref={firstNameAnimRef}
               >
-                {pageData.lastName}
+                {pageData.firstName}
               </TextWithShadow>
+              {pageData.lastName && (
+                <TextWithShadow
+                  variant="h1"
+                  className="hd-color lowercase tracking-wide"
+                  shadowClassName="hd-shadow"
+                  ref={lastNameAnimRef}
+                >
+                  {pageData.lastName}
+                </TextWithShadow>
+              )}
+            </div>
+            {pageData.tagLine && (
+              <p className="hd3-size hd-color lowercase" ref={tagLineAnimRef}>
+                {pageData.tagLine}
+              </p>
             )}
           </div>
-          {pageData.tagLine && (
-            <p className="hd3-size hd-color lowercase" ref={tagLineAnimRef}>
-              {pageData.tagLine}
-            </p>
-          )}
         </div>
+
+        {pageData.description && pageData.description.length > 0 && (
+          <p className="text-justify p1-color p1-size" ref={introAnimRef}>
+            {pageData.description.map((text, idx) => (
+              <span
+                key={idx}
+                className="mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block"
+              >
+                {text}
+              </span>
+            ))}
+          </p>
+        )}
       </div>
 
-      {pageData.description && pageData.description.length > 0 && (
-        <p
-          className="text-justify p1-color p1-size mt-2 md:mt-4 lg:mt-6"
-          ref={introAnimRef}
-        >
-          {pageData.description.map((text, idx) => (
-            <span
-              key={idx}
-              className="mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block"
-            >
-              {text}
-            </span>
-          ))}
-        </p>
-      )}
+      <div className="absolute bottom-0 w-full bg-DarkBlue">
+        <CurveDown className="fill-EerieBlack" />
+      </div>
     </div>
   );
 };

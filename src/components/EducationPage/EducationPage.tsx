@@ -28,41 +28,39 @@ const EducationPage: React.FC<IProps> = (props) => {
     className,
     pageData: { sectionHeadingText, sectionSubHeadingText, educationData },
   } = props;
-  const wrapperRef = useRef(null);
-  const masterTimeline = useTimeline();
-  const entry = useIntersectionObserver(wrapperRef as any, {
-    threshold: 0.5,
-  });
-  const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
-  useEffect(() => {
-    if (!masterTimeline) return;
-    if (isIntersecting) {
-      masterTimeline.play();
-    }
-  }, [isIntersecting, masterTimeline]);
+  const masterTimeline = useTimeline({
+    scrollTrigger: {
+      trigger: '#education',
+      scrub: 1,
+      start: 'top bottom',
+      end: 'bottom bottom',
+    },
+  });
 
   return (
-    <div className={clsx(className)} ref={wrapperRef as any}>
-      <SectionHeading
-        variant="secondary"
-        heading={sectionHeadingText}
-        subHeading={sectionSubHeadingText}
-        timeline={masterTimeline}
-      />
-      {educationData && educationData.length > 0 && (
-        <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
-          {educationData.map((item, index) => (
-            <EducationBox
-              key={index}
-              data={item}
-              isLast={index === educationData.length - 1}
-              timeline={masterTimeline}
-              index={index}
-            />
-          ))}
-        </div>
-      )}
+    <div className={clsx(className)} id="education">
+      <div className="pd-section">
+        <SectionHeading
+          variant="secondary"
+          heading={sectionHeadingText}
+          subHeading={sectionSubHeadingText}
+          timeline={masterTimeline}
+        />
+        {educationData && educationData.length > 0 && (
+          <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
+            {educationData.map((item, index) => (
+              <EducationBox
+                key={index}
+                data={item}
+                isLast={index === educationData.length - 1}
+                timeline={masterTimeline}
+                index={index}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };
