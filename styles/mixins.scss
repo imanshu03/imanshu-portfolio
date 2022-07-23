@@ -45,8 +45,7 @@ $colors: (
 
 @mixin headingColor($mode) {
   @if $mode == 'theme1' {
-    @apply text-AteneoBlue;
-    @apply dark:text-PastelPink;
+    @apply text-PastelPink;
   } @else {
     @apply text-white;
   }
@@ -54,12 +53,9 @@ $colors: (
 
 @mixin headingShadow($mode) {
   @if $mode == 'theme1' {
-    @apply ts-wild-blue-3;
-    @apply md:ts-wild-blue-4;
-    @apply lg:ts-wild-blue-5;
-    @apply dark:ts-deep-ruby-3;
-    @apply dark:md:ts-deep-ruby-4;
-    @apply dark:lg:ts-deep-ruby-5;
+    @apply ts-deep-ruby-3;
+    @apply md:ts-deep-ruby-4;
+    @apply lg:ts-deep-ruby-5;
   } @else {
     @apply ts-shadow-blue-3;
     @apply md:ts-shadow-blue-4;
@@ -69,12 +65,9 @@ $colors: (
 
 @mixin sectionHeadingShadow($mode) {
   @if $mode == 'theme1' {
-    @apply ts-wild-blue-2;
-    @apply md:ts-wild-blue-3;
-    @apply lg:ts-wild-blue-4;
-    @apply dark:ts-deep-ruby-2;
-    @apply dark:md:ts-deep-ruby-3;
-    @apply dark:lg:ts-deep-ruby-4;
+    @apply ts-deep-ruby-2;
+    @apply md:ts-deep-ruby-3;
+    @apply lg:ts-deep-ruby-4;
   } @else {
     @apply ts-shadow-blue-2;
     @apply md:ts-shadow-blue-3;
@@ -85,7 +78,7 @@ $colors: (
 @mixin contentColor($mode) {
   @if $mode == 'theme1' {
     @apply text-GunMetal;
-    @apply dark:text-EggShell;
+    @apply text-EggShell;
   } @else {
     @apply text-white;
   }
@@ -93,8 +86,7 @@ $colors: (
 
 @mixin subContentColor($mode) {
   @if $mode == 'theme1' {
-    @apply text-gray-500;
-    @apply dark:text-LanguidLavender;
+    @apply text-LanguidLavender;
   } @else {
     @apply text-white;
   }
@@ -102,8 +94,7 @@ $colors: (
 
 @mixin timelineDotColor($mode) {
   @if $mode == 'theme1' {
-    @apply border-AteneoBlue;
-    @apply dark:border-PastelPink;
+    @apply border-PastelPink;
   } @else {
     @apply border-white;
   }
@@ -111,8 +102,7 @@ $colors: (
 
 @mixin timelineColor($mode) {
   @if $mode == 'theme1' {
-    @apply bg-WildBlue;
-    @apply dark:bg-DeepRuby;
+    @apply bg-DeepRuby;
   } @else {
     @apply bg-ShadowBlue;
   }
@@ -120,9 +110,23 @@ $colors: (
 
 @mixin svgFill($mode) {
   @if $mode == 'theme1' {
-    @apply fill-AteneoBlue;
-    @apply dark:fill-PastelPink;
+    @apply fill-PastelPink;
   } @else {
     @apply fill-white;
+  }
+}
+
+@mixin svgDropShadow($start, $end) {
+  @for $blur from $start through $end {
+    .curve-ds-down-#{$blur} {
+      svg {
+        filter: drop-shadow(0px 4px #{$blur}px rgba(0, 0, 0, 0.2));
+      }
+    }
+    .curve-ds-up-#{$blur} {
+      svg {
+        filter: drop-shadow(0px -4px #{$blur}px rgba(0, 0, 0, 0.2));
+      }
+    }
   }
 }

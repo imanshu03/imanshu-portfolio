@@ -4,6 +4,7 @@ import EducationBox from './EducationBox';
 import clsx from 'classnames';
 import useTimeline from '@hooks/useTimeline';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import CurveWrapper from '@common/CurveWrapper';
 
 interface IProps {
   className?: string;
@@ -48,7 +49,7 @@ const EducationPage: React.FC<IProps> = (props) => {
           timeline={masterTimeline}
         />
         {educationData && educationData.length > 0 && (
-          <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
+          <div className="flex flex-col items-center justify-center mt-10 md:mt-12 lg:mt-14">
             {educationData.map((item, index) => (
               <EducationBox
                 key={index}
@@ -61,6 +62,7 @@ const EducationPage: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
+      <CurveWrapper direction="up" shadowDirection="up" invert />
     </div>
   );
 };

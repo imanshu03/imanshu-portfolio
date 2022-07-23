@@ -15,6 +15,8 @@ import StyledIcon from './StyledIcon';
 import TailwindIcon from './TailwindIcon';
 import NextIcon from './NextIcon';
 import GsapIcon from './GsapIcon';
+import MongoIcon from './MongoIcon';
+import SqlIcon from './SqlIcon';
 
 export {
   ReactIcon,
@@ -34,4 +36,6 @@ export {
   TailwindIcon,
   NextIcon,
   GsapIcon,
+  MongoIcon,
+  SqlIcon,
 };

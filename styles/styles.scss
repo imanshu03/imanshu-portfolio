@@ -3,11 +3,7 @@
 @layer components {
   @include createTextShadows(5);
 
-  .bg-gradient {
-    background: #3d72b4;
-    background: -webkit-linear-gradient(to bottom right, #3d72b4, #525252);
-    background: linear-gradient(to bottom right, #3d72b4, #525252);
-  }
+  @include svgDropShadow(2, 6);
 }
 
 .animation-marquee {
@@ -88,7 +84,7 @@
 }
 
 .pd-section {
-  @apply py-[1.4rem];
+  @apply pt-[1.4rem];
   @apply px-[1rem];
   @apply lg:px-[2rem];
 }
@@ -96,8 +92,23 @@
 .section {
   &-theme1 {
     @apply w-full;
-    @apply bg-white;
-    @apply dark:bg-EerieBlack;
+    @apply bg-EerieBlack;
+
+    .curve-up {
+      @apply bg-EerieBlack;
+
+      svg {
+        @apply fill-DarkBlue;
+      }
+    }
+
+    .curve-down {
+      @apply bg-DarkBlue;
+
+      svg {
+        @apply fill-EerieBlack;
+      }
+    }
 
     .hd-color {
       @include headingColor('theme1');
@@ -134,8 +145,23 @@
 
   &-theme2 {
     @apply w-full;
-    @apply bg-gradient;
-    @apply dark:bg-gradient-DarkBlue;
+    @apply bg-DarkBlue;
+
+    .curve-up {
+      @apply bg-DarkBlue;
+
+      svg {
+        @apply fill-EerieBlack;
+      }
+    }
+
+    .curve-down {
+      @apply bg-EerieBlack;
+
+      svg {
+        @apply fill-DarkBlue;
+      }
+    }
 
     .hd-color {
       @include headingColor('theme2');
@@ -177,4 +203,8 @@
 
 .ht-auto {
   @apply h-auto;
+}
+
+.inverted-curve {
+  transform: rotateY(180deg);
 }

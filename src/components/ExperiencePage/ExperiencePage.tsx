@@ -1,10 +1,9 @@
-import React, { useEffect, useMemo, memo } from 'react';
-import { useRef } from 'react';
+import React, { memo } from 'react';
 import useTimeline from '@hooks/useTimeline';
-import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import SectionHeading from '@common/SectionHeading';
 import ExperienceBox from './ExperienceBox';
 import clsx from 'classnames';
+import CurveWrapper from '@common/CurveWrapper';
 
 interface IProps {
   className?: string;
@@ -42,7 +41,7 @@ const ExperiencePage: React.FC<IProps> = (props) => {
 
   return (
     <div className={clsx(className, 'relative')} id="experience">
-      <div className="pd-section">
+      <div className="pd-section relative z-10">
         <SectionHeading
           heading={sectionHeadingText}
           subHeading={sectionSubHeadingText}
@@ -50,7 +49,7 @@ const ExperiencePage: React.FC<IProps> = (props) => {
           variant="primary"
         />
         {experienceData && experienceData.length > 0 && (
-          <div className="flex flex-col items-center justify-center my-10 md:my-12 lg:my-14">
+          <div className="flex flex-col items-center justify-center mt-10 md:mt-12 lg:mt-14">
             {experienceData.map((item, index) => (
               <ExperienceBox
                 key={index}
@@ -63,6 +62,12 @@ const ExperiencePage: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
+      <CurveWrapper
+        direction="down"
+        variant="secondary"
+        invert
+        className="relative top-[1px]"
+      />
     </div>
   );
 };

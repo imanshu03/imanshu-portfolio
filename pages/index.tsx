@@ -1,12 +1,11 @@
 import type { NextPage } from 'next';
 import React, { useEffect } from 'react';
-import axios from 'axios';
 import smoothScroll from 'smoothscroll-polyfill';
-import ThemeToggle from '@components/ThemeToggle';
 import ErrorBoundary from '@components/ErrorBoundary';
 import clsx from 'classnames';
 import { PageComponents } from '@components/PageComponents';
 import PageConfig from '../page.json';
+import CustomCursor from '@components/CustomCursor';
 
 interface IProps {
   PageConfig: {
@@ -29,12 +28,7 @@ const Home: NextPage<IProps> = (props) => {
   }, []);
 
   const {
-    PageConfig: {
-      AppComponents = [],
-      defaultMode = 'dark',
-      enableToggleMode = true,
-      disableSessionTheme = false,
-    },
+    PageConfig: { AppComponents = [] },
   } = props;
 
   const getTheme = (index: number) => {
@@ -45,11 +39,8 @@ const Home: NextPage<IProps> = (props) => {
 
   return (
     <ErrorBoundary>
-      <ThemeToggle
-        defaultMode={defaultMode}
-        enableToggleMode={enableToggleMode}
-        disableSessionTheme={disableSessionTheme}
-      >
+      <CustomCursor />
+      <main className="drop-shadow-lg my-0 mx-0 md:mx-[6rem] lg:mx-[10rem] xl:mx-[15rem] box-border">
         {PageAppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];
           if (Component) {
@@ -67,7 +58,7 @@ const Home: NextPage<IProps> = (props) => {
           }
           return null;
         })}
-      </ThemeToggle>
+      </main>
     </ErrorBoundary>
   );
 };

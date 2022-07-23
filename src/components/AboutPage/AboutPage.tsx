@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useContext, memo } from 'react';
+import React, { useEffect, useMemo, useRef, memo } from 'react';
 import clsx from 'classnames';
 import Image from 'next/image';
 import { Power2 } from 'gsap';
@@ -9,9 +9,7 @@ import { useLottie } from 'lottie-react';
 import ProfileImage from '@assets/profile.webp';
 import ProfileMaskImage from '@assets/profile-mask.webp';
 import RocketWhite from '@assets/RocketWhite.json';
-import RocketBlue from '@assets/RocketBlue.json';
-import { ThemeContext } from '@components/ThemeToggle';
-import CurveDown from '@assets/CurveDown';
+import CurveWrapper from '@common/CurveWrapper';
 
 interface IProps {
   className?: string;
@@ -31,16 +29,12 @@ const AboutPage: React.FC<IProps> = (props) => {
   const entry = useIntersectionObserver(wrapperRef);
   const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
 
-  // setting lottie data based upon theme
-  const theme = useContext(ThemeContext);
   const { View: RocketLottie } = useLottie({
     loop: true,
-    animationData:
-      theme === 'light' && version !== 'theme2' ? RocketBlue : RocketWhite,
+    animationData: RocketWhite,
     autoplay: true,
   });
 
-  // animation timelines
   const masterTimeline = useTimeline(
     {},
     { enableScrollTrigger: false, pauseOnInit: true },
@@ -167,14 +161,14 @@ const AboutPage: React.FC<IProps> = (props) => {
               <Image
                 src={ProfileImage}
                 alt="Profile Image"
-                className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
+                className="rounded-[50%] grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
                 loading="eager"
               />
               <div className="absolute w-full h-full flex">
                 <Image
                   src={ProfileMaskImage}
                   alt="Profile Image"
-                  className="rounded-[50%] dark:grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
+                  className="rounded-[50%] grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
                   loading="eager"
                 />
               </div>
@@ -237,9 +231,7 @@ const AboutPage: React.FC<IProps> = (props) => {
         )}
       </div>
 
-      <div className="absolute bottom-0 w-full bg-DarkBlue">
-        <CurveDown className="fill-EerieBlack" />
-      </div>
+      <CurveWrapper direction="down" className="absolute bottom-0" />
     </div>
   );
 };

@@ -14,7 +14,7 @@ interface IProps {
 }
 
 const SectionHeading: React.FC<IProps> = (props) => {
-  const { timeline, heading, subHeading, variant = 'primary' } = props;
+  const { timeline, heading, subHeading } = props;
   const headingRef = useRef(null);
   const subHeadingRef = useRef(null);
 

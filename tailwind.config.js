@@ -39,6 +39,8 @@ module.exports = {
         PineTree: '#2F2519',
 
         LightRose: '#da6784',
+
+        DarkBlack: '#0e151c',
       },
       screens: {
         betterhover: { raw: '(hover: hover)' },
@@ -52,11 +54,6 @@ module.exports = {
           'text-stroke': (value) => ({
             '-webkit-text-stroke-color': value,
             '-webkit-text-stroke-width': '1px',
-          }),
-          'bg-gradient': (value) => ({
-            background: value,
-            background: `-webkit-linear-gradient(to bottom right, ${value}, ${value})`,
-            background: `linear-gradient(to bottom right, ${value}, ${value})`,
           }),
         },
         { values: theme('colors') },

@@ -27,82 +27,96 @@
         "pageData": {
           "sectionHeadingText": "skills",
           "sectionSubHeadingText": "my area of expertise",
-          "skillsData": [
-            {
-              "text": "React.js",
-              "icon": "ReactIcon"
-            },
-            {
-              "text": "JavaScript",
-              "icon": "JsIcon"
-            },
-            {
-              "text": "TypeScript",
-              "icon": "TsIcon"
-            },
-            {
-              "text": "Redux.js",
-              "icon": "ReduxIcon"
-            },
-            {
-              "text": "Redux Saga",
-              "icon": "SagaIcon"
-            },
-            {
-              "text": "HTML5",
-              "icon": "HtmlIcon"
-            },
-            {
-              "text": "CSS3",
-              "icon": "CssIcon"
-            },
-            {
-              "text": "SCSS",
-              "icon": "SassIcon"
-            },
-            {
-              "text": "Styled Components",
-              "icon": "StyledIcon"
-            },
-            {
-              "text": "Tailwind",
-              "icon": "TailwindIcon"
-            },
-            {
-              "text": "Next.js",
-              "icon": "NextIcon"
-            },
-            {
-              "text": "Gsap 3",
-              "icon": "GsapIcon"
-            },
-            {
-              "text": "Express.js",
-              "icon": "ExpressIcon"
-            },
-            {
-              "text": "Node.js",
-              "icon": "NodeIcon"
-            },
-            {
-              "text": "Git",
-              "icon": "GitIcon"
-            },
-            {
-              "text": "Photoshop",
-              "icon": "PsIcon"
-            },
-            {
-              "text": "WebPack",
-              "icon": "WebPackIcon"
-            }
-          ]
+          "skillsData": {
+            "frontendDevelopment": [
+              {
+                "text": "React.js",
+                "icon": "ReactIcon"
+              },
+              {
+                "text": "Next.js",
+                "icon": "NextIcon"
+              },
+              {
+                "text": "JavaScript",
+                "icon": "JsIcon"
+              },
+              {
+                "text": "TypeScript",
+                "icon": "TsIcon"
+              },
+              {
+                "text": "Redux.js",
+                "icon": "ReduxIcon"
+              },
+              {
+                "text": "Redux Saga",
+                "icon": "SagaIcon"
+              },
+              {
+                "text": "HTML5",
+                "icon": "HtmlIcon"
+              },
+              {
+                "text": "CSS3",
+                "icon": "CssIcon"
+              },
+              {
+                "text": "SCSS",
+                "icon": "SassIcon"
+              },
+              {
+                "text": "Styled Components",
+                "icon": "StyledIcon"
+              },
+              {
+                "text": "Tailwind",
+                "icon": "TailwindIcon"
+              },
+              {
+                "text": "Gsap 3",
+                "icon": "GsapIcon"
+              }
+            ],
+            "backendDevelopment": [
+              {
+                "text": "Node.js",
+                "icon": "NodeIcon"
+              },
+              {
+                "text": "Express.js",
+                "icon": "ExpressIcon"
+              },
+              {
+                "text": "MongoDB",
+                "icon": "MongoIcon"
+              },
+              {
+                "text": "MySQL",
+                "icon": "SqlIcon"
+              }
+            ],
+            "otherTools": [
+              {
+                "text": "Git",
+                "icon": "GitIcon"
+              },
+              {
+                "text": "Photoshop",
+                "icon": "PsIcon"
+              },
+              {
+                "text": "WebPack",
+                "icon": "WebPackIcon"
+              }
+            ]
+          }
         }
       }
     },
     {
       "Component": "ExperiencePage",
-      "className": "min-ht-screen",
+      "className": "ht-auto",
       "props": {
         "pageData": {
           "sectionHeadingText": "experience",
