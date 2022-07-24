@@ -21,7 +21,6 @@ interface IProps {
       responsibilities?: string[];
     }>;
   };
-  version: 'theme1' | 'theme2';
 }
 
 const ExperiencePage: React.FC<IProps> = (props) => {
@@ -65,7 +64,6 @@ const ExperiencePage: React.FC<IProps> = (props) => {
       <CurveWrapper
         direction="down"
         variant="secondary"
-        invert
         className="relative top-[1px]"
       />
     </div>

@@ -14,7 +14,6 @@ interface IProps {
       [key: string]: Array<{ text: string; icon?: string }>;
     };
   };
-  version: 'theme1' | 'theme2';
 }
 
 const snakeToSpacedString = (str: string) =>
@@ -85,7 +84,12 @@ const SkillsPage: React.FC<IProps> = (props) => {
           ))}
         </div>
       </div>
-      <CurveWrapper direction="up" shadowDirection="up" variant="secondary" />
+      <CurveWrapper
+        direction="up"
+        shadowDirection="up"
+        variant="secondary"
+        invert
+      />
     </div>
   );
 };

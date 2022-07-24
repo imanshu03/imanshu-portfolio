@@ -13,7 +13,7 @@ const SkillBox: React.FC<IProps> = (props) => {
   return (
     <div
       className={clsx(
-        'flex flex-col flex-nowrap items-center justify-center mx-[0.2rem] md:mx-[0.4rem] lg:mx-[0.6rem] p-[0.6rem] disable-select',
+        'm-[0.2rem] md:m-[0.4rem] lg:m-[0.6rem] p-[0.6rem] disable-select',
         {
           'bg-gray-50/10': !icon,
         },
@@ -24,9 +24,11 @@ const SkillBox: React.FC<IProps> = (props) => {
           className:
             'w-[2rem] h-[2rem] md:w-[3.5rem] md:h-[3.5rem] lg:w-[4.5rem] lg:h-[4.5rem] md:mb-1 lg:mb-2',
         })}
-      {/* <span className="p1-color p3-size text-center w-[7rem] lg:w-[10rem]">
-        {text}
-      </span> */}
+      {!icon && text && (
+        <div className="w-[2rem] h-[2rem] md:w-[3.5rem] md:h-[3.5rem] lg:w-[4.5rem] lg:h-[4.5rem] md:mb-1 lg:mb-2 flex items-center justify-center">
+          <p className="p4-size p1-color text-center">{text}</p>
+        </div>
+      )}
     </div>
   );
 };

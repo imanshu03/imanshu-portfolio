@@ -1,5 +1,4 @@
-import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import React, { useRef, useEffect, useMemo } from 'react';
+import React from 'react';
 import clsx from 'classnames';
 import SectionHeading from '@common/SectionHeading';
 import AwardBox from './AwardBox';
@@ -9,7 +8,7 @@ interface IProps {
   className?: string;
   pageData: {
     sectionHeadingText: string;
-    sectionSubHeadingText: string;
+    sectionSubHeadingText?: string;
     awardsData: Array<{
       type?: string;
       heading: string;
@@ -18,7 +17,6 @@ interface IProps {
       description: string;
     }>;
   };
-  version: 'theme1' | 'theme2';
 }
 
 const AwardsPage: React.FC<IProps> = (props) => {

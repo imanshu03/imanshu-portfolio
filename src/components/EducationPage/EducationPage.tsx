@@ -1,9 +1,8 @@
 import SectionHeading from '@common/SectionHeading';
-import React, { useRef, memo, useMemo, useEffect } from 'react';
+import React, { memo } from 'react';
 import EducationBox from './EducationBox';
 import clsx from 'classnames';
 import useTimeline from '@hooks/useTimeline';
-import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import CurveWrapper from '@common/CurveWrapper';
 
 interface IProps {
@@ -21,7 +20,6 @@ interface IProps {
       score?: string;
     }>;
   };
-  version: 'theme1' | 'theme2';
 }
 
 const EducationPage: React.FC<IProps> = (props) => {

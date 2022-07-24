@@ -33,7 +33,7 @@ const Timeline: React.FC<IProps> = (props) => {
             height: 0,
             ease: Power2.easeOut,
           },
-          { height: 'calc(100% - 0.6rem)' },
+          { height: 'calc(100% - 1.35rem)' },
           'showTimeline+=0.1',
         );
       }
@@ -52,7 +52,7 @@ const Timeline: React.FC<IProps> = (props) => {
       {!isLast && (
         <div
           className={clsx(
-            'w-[2px] absolute left-[0.28rem] top-[0.6rem] h-0 timeline-line',
+            'w-[2px] absolute left-[0.28rem] top-[1rem] h-0 timeline-line',
           )}
           ref={lineRef}
         />

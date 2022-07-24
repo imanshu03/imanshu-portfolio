@@ -20,11 +20,10 @@ interface IProps {
     tagLine?: string;
     description?: string[];
   };
-  version: 'theme1' | 'theme2';
 }
 
 const AboutPage: React.FC<IProps> = (props) => {
-  const { className, pageData, version } = props;
+  const { className, pageData } = props;
   const wrapperRef = useRef(null);
   const entry = useIntersectionObserver(wrapperRef);
   const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
@@ -222,7 +221,7 @@ const AboutPage: React.FC<IProps> = (props) => {
             {pageData.description.map((text, idx) => (
               <span
                 key={idx}
-                className="mt-[0.2rem] md:mt-[0.6rem] lg:mt-[1rem] block"
+                className="mt-[0.4rem] md:mt-[0.6rem] lg:mt-[1rem] block"
               >
                 {text}
               </span>

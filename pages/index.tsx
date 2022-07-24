@@ -52,7 +52,6 @@ const Home: NextPage<IProps> = (props) => {
                   `section-${getTheme(index)}`,
                   pageItem.className,
                 )}
-                version={getTheme(index)}
               />
             );
           }

@@ -120,7 +120,7 @@
       "props": {
         "pageData": {
           "sectionHeadingText": "experience",
-          "sectionSubHeadingText": "where i have worked",
+          "sectionSubHeadingText": "i love what i do",
           "experienceData": [
             {
               "company": "Cred",
@@ -182,7 +182,7 @@
       "props": {
         "pageData": {
           "sectionHeadingText": "education",
-          "sectionSubHeadingText": "what i have studied",
+          "sectionSubHeadingText": "i have a decent knowledge",
           "educationData": [
             {
               "startDate": "August, 2015",
@@ -220,7 +220,7 @@
       "props": {
         "pageData": {
           "sectionHeadingText": "awards",
-          "sectionSubHeadingText": "what i have achieved",
+          "sectionSubHeadingText": "a proud recap of my achievements",
           "awardsData": [
             {
               "icon": "award",

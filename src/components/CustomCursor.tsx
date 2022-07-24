@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import clsx from 'classnames';
 
 const CustomCursor = () => {
   const [pos, setPos] = useState({
@@ -44,7 +43,9 @@ const CustomCursor = () => {
       <div
         className="absolute z-[100] rounded-cursor hidden lg:block"
         style={{
-          transform: `translate3d(${pos.x}px, ${pos.y}px, 0)`,
+          transform: `scale(${zoom ? 0.4 : 1})`,
+          left: pos.x,
+          top: pos.y,
         }}
       ></div>
     </>
