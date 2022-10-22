@@ -3,6 +3,7 @@ import clsx from 'classnames';
 import SectionHeading from '@common/SectionHeading';
 import AwardBox from './AwardBox';
 import useTimeline from '@hooks/useTimeline';
+import CurveWrapper from '@common/CurveWrapper';
 
 interface IProps {
   className?: string;
@@ -56,6 +57,12 @@ const AwardsPage: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
+      <CurveWrapper
+        direction="down"
+        variant="secondary"
+        className="relative top-[1px]"
+        invert
+      />
     </div>
   );
 };

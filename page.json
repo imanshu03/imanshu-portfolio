@@ -246,6 +246,33 @@
           ]
         }
       }
+    },
+    {
+      "Component": "ConnectPage",
+      "className": "ht-auto",
+      "props": {
+        "pageData": {
+          "sectionHeadingText": "Social presence",
+          "sectionSubHeadingText": "feel free to ping me up",
+          "linksData": [
+            {
+              "icon": "github",
+              "heading": "Github",
+              "href": "https://github.com/imanshu03"
+            },
+            {
+              "icon": "linkedin",
+              "heading": "LinkedIn",
+              "href": "https://www.linkedin.com/in/imanshurathore/"
+            },
+            {
+              "icon": "mail",
+              "heading": "Mail",
+              "href": "mailto:imanshurathore@gmail.com"
+            }
+          ]
+        }
+      }
     }
   ]
 }

@@ -208,3 +208,67 @@
 .inverted-curve {
   transform: rotateY(180deg);
 }
+
+.button-3d {
+  position: relative;
+  user-select: none;
+  min-width: 10rem;
+
+  &:active {
+    .button-3d-main-bar {
+      transform: translateY(0.5rem);
+    }
+    .button-3d-bottom-bar {
+      height: 0.5rem;
+    }
+  }
+
+  &-content {
+    transform: rotateX(30deg);
+    scale: 1.1;
+  }
+
+  &-main-bar {
+    position: relative;
+    padding: 0 2rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @apply text-ShadowBlue;
+    background-color: white;
+    z-index: 3;
+    transition: all 0.2s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2rem;
+      height: 3rem;
+      background-color: white;
+      right: -1.4rem;
+      transform: skewX(20deg);
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 2rem;
+      height: 3rem;
+      background-color: white;
+      left: -1.4rem;
+      transform: skewX(-20deg);
+    }
+  }
+
+  &-bottom-bar {
+    z-index: 2;
+    width: calc(100% + 3.9rem);
+    position: absolute;
+    left: calc(-2rem + 1px);
+    height: 1rem;
+    @apply bg-ShadowBlue;
+    transition: all 0.2s ease-in-out;
+    bottom: -1rem;
+  }
+}
