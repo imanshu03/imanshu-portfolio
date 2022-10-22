@@ -206,20 +206,24 @@ const AboutPage: React.FC<IProps> = (props) => {
                 className="rounded-[50%] grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem]"
                 loading="eager"
               />
-              <div className="absolute w-full h-full flex">
-                <Image
-                  src={ProfileMaskImage}
-                  alt="Profile Image"
-                  className="rounded-[50%] grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
-                  loading="eager"
-                />
-              </div>
-              <div
-                className="absolute h-[90%] w-[90%] z-10 right-[-56%] top-[-34%]"
-                ref={rocketLottieRef}
-              >
-                {RocketLottie}
-              </div>
+              {!isMobileDevice && !isAnimationDisabled ? (
+                <div className="absolute w-full h-full flex">
+                  <Image
+                    src={ProfileMaskImage}
+                    alt="Profile Image"
+                    className="rounded-[50%] grayscale w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] absolute left-0 top-0 z-50"
+                    loading="eager"
+                  />
+                </div>
+              ) : null}
+              {!isMobileDevice && !isAnimationDisabled ? (
+                <div
+                  className="absolute h-[90%] w-[90%] z-10 right-[-56%] top-[-34%]"
+                  ref={rocketLottieRef}
+                >
+                  {RocketLottie}
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="w-full flex flex-col items-center justify-center order-2">
