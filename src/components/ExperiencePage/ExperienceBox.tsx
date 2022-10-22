@@ -5,6 +5,8 @@ import * as CompanyLogos from '@assets/Company';
 import Image from 'next/image';
 import ShowLess from '@assets/ShowLess';
 import useHeight from '@hooks/useHeight';
+import clsx from 'classnames';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IProps {
   data: {
@@ -43,6 +45,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
   const timeRef = useRef(null);
   const listRef = useRef(null);
   const listHeight = useHeight(listRef);
+  const isMobileDevice = useMobileDevice();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -120,12 +123,18 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                 {isExpanded ? 'hide' : 'show'}
                 &nbsp;responsibilities&nbsp;&nbsp;
                 <ShowLess
-                  className="inline w-3 h-3 transition-[transform] ease-in-out duration-[400ms]"
+                  className={clsx('inline w-3 h-3', {
+                    'transition-[transform] ease-in-out duration-[400ms]':
+                      !isMobileDevice,
+                  })}
                   style={isExpanded ? {} : { transform: 'rotate(180deg)' }}
                 />
               </button>
               <div
-                className="overflow-hidden pl-4 box-border origin-top transition-[height] ease-in-out duration-[400ms]"
+                className={clsx('overflow-hidden pl-4 box-border origin-top', {
+                  'transition-[height] ease-in-out duration-[400ms]':
+                    !isMobileDevice,
+                })}
                 style={
                   isExpanded
                     ? { height: `${listHeight + 10}px` }

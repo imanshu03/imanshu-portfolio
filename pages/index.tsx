@@ -6,6 +6,7 @@ import clsx from 'classnames';
 import { PageComponents } from '@components/PageComponents';
 import PageConfig from '../page.json';
 import CustomCursor from '@components/CustomCursor';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IProps {
   PageConfig: {
@@ -30,7 +31,7 @@ const Home: NextPage<IProps> = (props) => {
   const {
     PageConfig: { AppComponents = [] },
   } = props;
-
+  const isMobileDevice = useMobileDevice();
   const getTheme = (index: number) => {
     return index % 2 === 0 ? 'theme1' : 'theme2';
   };
@@ -39,7 +40,7 @@ const Home: NextPage<IProps> = (props) => {
 
   return (
     <ErrorBoundary>
-      <CustomCursor />
+      {!isMobileDevice ? <CustomCursor /> : null}
       <main className="drop-shadow-lg my-0 mx-0 box-border">
         {PageAppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];

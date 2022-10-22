@@ -47,7 +47,7 @@ const AwardsPage: React.FC<IProps> = (props) => {
           variant="primary"
         />
         {awardsData && awardsData.length && (
-          <div className="flex flex-row items-center justify-evenly flex-wrap my-10 md:my-12 lg:my-14">
+          <div className="flex flex-row items-center justify-evenly flex-wrap mt-10 md:my-12 lg:my-14">
             {awardsData.map((item, index) => (
               <AwardBox
                 key={index}
