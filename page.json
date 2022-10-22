@@ -258,12 +258,12 @@
             {
               "icon": "github",
               "heading": "Github",
-              "href": "https://github.com/imanshu03"
+              "url": "https://github.com/imanshu03"
             },
             {
               "icon": "linkedin",
               "heading": "LinkedIn",
-              "href": "https://www.linkedin.com/in/imanshurathore/"
+              "url": "https://www.linkedin.com/in/imanshurathore/"
             },
             {
               "icon": "mail",

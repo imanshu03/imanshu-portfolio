@@ -14,7 +14,8 @@ interface IProps {
     linksData: Array<{
       icon?: string;
       heading: string;
-      href: string;
+      href?: string;
+      url?: string;
     }>;
   };
 }
@@ -62,6 +63,15 @@ const ConnectPage: React.FC<IProps> = (props) => {
     });
   }, [masterTimeline, boxRefs]);
 
+  const onLinkClick = ({ url, href }: { url?: string; href?: string }) => {
+    if (url) {
+      return window.open(url, '_blank');
+    }
+    if (href) {
+      return window.open(href);
+    }
+  };
+
   return (
     <div id="connect" className={clsx(className)}>
       <div className="pd-section md:px-[6rem] lg:px-[10rem] xl:px-[15rem]">
@@ -80,6 +90,7 @@ const ConnectPage: React.FC<IProps> = (props) => {
                   key={link.heading}
                   ref={(e) => (boxRefs.current[index] = e)}
                   className="mb-8 mx-0 md:mx-8 lg:mb-0"
+                  onMouseUp={() => onLinkClick(link)}
                 >
                   <div className="flex flex-row items-center justify-center">
                     <DisplayIcon className="h-[1rem] w-[1rem]" />
