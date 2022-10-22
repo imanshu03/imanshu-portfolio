@@ -52,7 +52,7 @@ const Timeline: React.FC<IProps> = (props) => {
       {!isLast && (
         <div
           className={clsx(
-            'w-[2px] absolute left-[0.28rem] top-[1rem] h-0 timeline-line',
+            'w-[2px] absolute left-[0.28rem] top-[1rem] h-[calc(100%_-_1.35rem)] timeline-line',
           )}
           ref={lineRef}
         />
