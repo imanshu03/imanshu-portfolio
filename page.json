@@ -126,8 +126,13 @@
               "company": "Cred",
               "icon": "cred",
               "startDate": "May, 2022",
-              "designation": "Frontend Engineer",
-              "location": "Bengaluru, India"
+              "designation": "Senior Frontend Engineer",
+              "location": "Bengaluru, India",
+              "responsibilities": [
+                "Design and develop new features/requirements by translating given Wire-frames into Web Components that meets markup standards, cross-browser compatibility, usability principles and accessibility.",
+                "Develop reusable and modular UI components on React, Tailwind CSS and TypeScript. Define accessibility, governance and rollout the components across the Internal Web Components library. Utilized Storybook to document and test UI components.",
+                "Developing a Micro-Frontend based application utilizing WebPack and Module Federation. This Application lets the end user customize their mobile apps flow by toggling the configurations in application and decision making logics."
+              ]
             },
             {
               "company": "Disney+ Hotstar",
@@ -138,7 +143,9 @@
               "designation": "SDE-2, Frontend",
               "location": "Gurgaon, India",
               "responsibilities": [
-                "Implemented Chrome Cast Receiver application for Hotstar using React and CAF framework."
+                "Ported the Disney+ Hotstar Chromecast receiver application from plain JavaScript to Next.js.",
+                "Implemented custom user interactions to the Chromecast application using the Google Cast Application Framework (CAF), which increased user engagement on ChromeCast Application by 18%.",
+                "Integrated region-based Chromecast configuration changes and RTL support for the different regions."
               ]
             },
             {
