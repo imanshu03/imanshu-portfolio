@@ -4,3 +4,15 @@ export const checkIfMobileDevice = () => {
   const isMobileDevice = regexp.test(details);
   return isMobileDevice;
 };
+
+export const checkIfAnimationDisabled = () => {
+  const isAnimationDisabled = Boolean(
+    localStorage.getItem('isAnimationDisabled')
+      ? Number(localStorage.getItem('isAnimationDisabled'))
+      : 0,
+  );
+  return isAnimationDisabled;
+};
+
+export const setAnimationDisabled = (value: boolean) =>
+  localStorage.setItem('isAnimationDisabled', JSON.stringify(Number(value)));

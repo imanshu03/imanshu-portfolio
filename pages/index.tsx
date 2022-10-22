@@ -7,6 +7,7 @@ import { PageComponents } from '@components/PageComponents';
 import PageConfig from '../page.json';
 import CustomCursor from '@components/CustomCursor';
 import { useMobileDevice } from '@hooks/useMobileDevice';
+import { useAnimationDisabled } from '@hooks/useAnimationDisabled';
 
 interface IProps {
   PageConfig: {
@@ -32,6 +33,7 @@ const Home: NextPage<IProps> = (props) => {
     PageConfig: { AppComponents = [] },
   } = props;
   const isMobileDevice = useMobileDevice();
+  const isAnimationDisabled = useAnimationDisabled();
   const getTheme = (index: number) => {
     return index % 2 === 0 ? 'theme1' : 'theme2';
   };
@@ -40,8 +42,12 @@ const Home: NextPage<IProps> = (props) => {
 
   return (
     <ErrorBoundary>
-      {!isMobileDevice ? <CustomCursor /> : null}
-      <main className="drop-shadow-lg my-0 mx-0 box-border">
+      {!isMobileDevice && !isAnimationDisabled ? <CustomCursor /> : null}
+      <main
+        className={clsx('drop-shadow-lg my-0 mx-0 box-border cursor-auto', {
+          'cursor-none': !isMobileDevice && !isAnimationDisabled,
+        })}
+      >
         {PageAppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];
           if (Component) {

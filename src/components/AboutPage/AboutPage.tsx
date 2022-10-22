@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, memo } from 'react';
+import React, { useEffect, useMemo, useRef, memo, useState } from 'react';
 import clsx from 'classnames';
 import Image from 'next/image';
 import { Power2 } from 'gsap';
@@ -11,6 +11,10 @@ import ProfileMaskImage from '@assets/profile-mask.webp';
 import RocketWhite from '@assets/RocketWhite.json';
 import CurveWrapper from '@common/CurveWrapper';
 import { useMobileDevice } from '@hooks/useMobileDevice';
+import { useRouter } from 'next/router';
+import { checkIfAnimationDisabled, setAnimationDisabled } from 'utils';
+import { useAnimationDisabled } from '@hooks/useAnimationDisabled';
+import Button2D from '@common/Button2D';
 
 interface IProps {
   className?: string;
@@ -28,6 +32,8 @@ const AboutPage: React.FC<IProps> = (props) => {
   const wrapperRef = useRef(null);
   const entry = useIntersectionObserver(wrapperRef);
   const isIntersecting = useMemo(() => entry?.isIntersecting, [entry]);
+  const isAnimationDisabled = useAnimationDisabled();
+  const Router = useRouter();
 
   const { View: RocketLottie } = useLottie({
     loop: true,
@@ -49,11 +55,13 @@ const AboutPage: React.FC<IProps> = (props) => {
   const introAnimRef = useRef(null);
   const imageAnimRef = useRef(null);
   const rocketLottieRef = useRef(null);
+  const buttonsRef = useRef(null);
 
   // adding tweens to timelines
   useEffect(() => {
     if (!masterTimeline) return;
     masterTimeline.addLabel('greetRef', 0);
+    masterTimeline.addLabel('buttonsRef', 0.2);
     masterTimeline.addLabel('imageRef', 0.2);
     masterTimeline.addLabel('nameRef', 0.2);
     masterTimeline.addLabel('taglineRef', 0.6);
@@ -65,6 +73,19 @@ const AboutPage: React.FC<IProps> = (props) => {
       { top: 100, opacity: 0, ease: Power2.easeOut },
       { top: 0, opacity: 1 },
       'greetRef',
+    );
+    masterTimeline.fromTo(
+      buttonsRef.current,
+      {
+        top: '-100px',
+        opacity: 0,
+        ease: Power2.easeOut,
+      },
+      {
+        top: 0,
+        opacity: 1,
+      },
+      'buttonsRef',
     );
     masterTimeline.fromTo(
       imageAnimRef.current,
@@ -146,6 +167,12 @@ const AboutPage: React.FC<IProps> = (props) => {
     if (isIntersecting) masterTimeline.play();
   }, [isIntersecting, masterTimeline]);
 
+  const toggleAnimation = () => {
+    const previousValue = checkIfAnimationDisabled();
+    setAnimationDisabled(!previousValue);
+    location.reload();
+  };
+
   return (
     <div
       className={clsx(className, 'relative')}
@@ -153,6 +180,20 @@ const AboutPage: React.FC<IProps> = (props) => {
       id="about"
     >
       <div className="pd-section md:px-[6rem] lg:px-[10rem] xl:px-[15rem] relative z-10">
+        <div
+          className="flex flex-row flex-nowrap items-center justify-between relative"
+          ref={buttonsRef}
+        >
+          <Button2D onClick={() => Router.push('/articles')}>
+            Published Articles
+          </Button2D>
+          {!isMobileDevice ? (
+            <Button2D onClick={toggleAnimation}>
+              {isAnimationDisabled ? 'Enable' : 'Disable'} Animations
+            </Button2D>
+          ) : null}
+        </div>
+
         <div className="w-full h-min flex flex-col items-center justify-center">
           <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
             <div

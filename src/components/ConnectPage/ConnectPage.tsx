@@ -38,7 +38,6 @@ const ConnectPage: React.FC<IProps> = (props) => {
 
   useEffect(() => {
     if (!masterTimeline || !boxRefs.current.every((e) => e)) return;
-    console.log({ boxRefs });
     boxRefs.current.forEach((ref, index) => {
       masterTimeline.addLabel(`showBox_${index}`, (index + 1) * 0.4);
       masterTimeline.fromTo(

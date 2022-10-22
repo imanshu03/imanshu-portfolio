@@ -1,5 +1,7 @@
 import React, { forwardRef } from 'react';
 import clsx from 'classnames';
+import { useAnimationDisabled } from '@hooks/useAnimationDisabled';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IButton3D {
   children?: React.ReactNode;
@@ -9,9 +11,15 @@ interface IButton3D {
 
 const Button3D = forwardRef<any, IButton3D>(function Button3D(props, ref) {
   const { children, className, onMouseUp } = props;
+  const isMobileDevice = useMobileDevice();
+  const isAnimationDisabled = useAnimationDisabled();
   return (
     <div
-      className={clsx('button-3d', className)}
+      className={clsx(
+        'button-3d cursor-pointer',
+        { '!cursor-none': !isMobileDevice && !isAnimationDisabled },
+        className,
+      )}
       ref={ref}
       onMouseUp={onMouseUp}
     >

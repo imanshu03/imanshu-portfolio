@@ -7,6 +7,7 @@ import ShowLess from '@assets/ShowLess';
 import useHeight from '@hooks/useHeight';
 import clsx from 'classnames';
 import { useMobileDevice } from '@hooks/useMobileDevice';
+import { useAnimationDisabled } from '@hooks/useAnimationDisabled';
 
 interface IProps {
   data: {
@@ -46,6 +47,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
   const listRef = useRef(null);
   const listHeight = useHeight(listRef);
   const isMobileDevice = useMobileDevice();
+  const isAnimationDisabled = useAnimationDisabled();
 
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -117,7 +119,10 @@ const ExperienceBox: React.FC<IProps> = (props) => {
           {responsibilities && responsibilities.length > 0 && (
             <div className="mt-2 flex flex-col items-start">
               <button
-                className="hd-color p4-size lowercase italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4 cursor-none"
+                className={clsx(
+                  'hd-color p4-size lowercase italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4',
+                  { '!cursor-none': !isMobileDevice && !isAnimationDisabled },
+                )}
                 onClick={onExpandToggle}
               >
                 {isExpanded ? 'hide' : 'show'}
@@ -125,7 +130,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
                 <ShowLess
                   className={clsx('inline w-3 h-3', {
                     'transition-[transform] ease-in-out duration-[400ms]':
-                      !isMobileDevice,
+                      !isMobileDevice && !isAnimationDisabled,
                   })}
                   style={isExpanded ? {} : { transform: 'rotate(180deg)' }}
                 />
@@ -133,7 +138,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
               <div
                 className={clsx('overflow-hidden pl-4 box-border origin-top', {
                   'transition-[height] ease-in-out duration-[400ms]':
-                    !isMobileDevice,
+                    !isMobileDevice && !isAnimationDisabled,
                 })}
                 style={
                   isExpanded
