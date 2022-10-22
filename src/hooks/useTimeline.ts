@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import { checkIfMobileDevice } from 'utils';
 
 interface TimelineBehaviour {
   enableScrollTrigger?: boolean;
@@ -32,6 +33,7 @@ const useTimeline = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  if (checkIfMobileDevice()) return null;
   return masterTimeline;
 };
 
