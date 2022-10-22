@@ -150,8 +150,8 @@ const AboutPage: React.FC<IProps> = (props) => {
       ref={wrapperRef as any}
       id="about"
     >
-      <div className="pd-section">
-        <div className="w-full h-min flex flex-col items-center justify-center relative">
+      <div className="pd-section md:px-[6rem] lg:px-[10rem] xl:px-[15rem] relative z-10">
+        <div className="w-full h-min flex flex-col items-center justify-center">
           <div className="w-full order-1 md:order-2 my-4 md:my-8 flex justify-center items-center">
             <div
               className="w-[8rem] h-[8rem] md:w-[10rem] md:h-[10rem] lg:h-[12rem] lg:w-[12rem] flex relative"

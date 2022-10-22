@@ -60,7 +60,9 @@ a {
   border-radius: 50%;
   background-color: white;
   mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
   transition: 0.2s transform ease-out;
+  pointer-events: none;
 }
 
 .cursor-shadow {
@@ -70,8 +72,9 @@ a {
   background-color: white;
   filter: opacity(0.2);
   transition: 0.2s transform ease-out;
-  left: -1.25rem;
-  top: -1.25rem;
+  left: -2rem;
+  top: -2rem;
+  pointer-events: none;
 }
 
 @import './styles.scss';

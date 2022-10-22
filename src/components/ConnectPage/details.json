@@ -1,0 +1,30 @@
+{
+  "socialLinks": [
+    {
+      "icon": "MailIcon",
+      "value": "imanshurathore@gmail.com",
+      "href": "mailto:imanshurathore@gmail.com",
+      "alt": "email"
+    },
+    {
+      "icon": "MobileIcon",
+      "value": "+91-7837770661",
+      "href": "tel:+91-7837770661",
+      "alt": "mobile"
+    },
+    {
+      "icon": "LinkedinIcon",
+      "value": "imanshurathore",
+      "href": "https://www.linkedin.com/in/imanshurathore/",
+      "target": "_blank",
+      "alt": "linkedin"
+    },
+    {
+      "icon": "GithubIcon",
+      "value": "imanshu03",
+      "href": "https://github.com/imanshu03",
+      "target": "_blank",
+      "alt": "github"
+    }
+  ]
+}

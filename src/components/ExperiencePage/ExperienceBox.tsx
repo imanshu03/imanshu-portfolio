@@ -114,7 +114,7 @@ const ExperienceBox: React.FC<IProps> = (props) => {
           {responsibilities && responsibilities.length > 0 && (
             <div className="mt-2 flex flex-col items-start">
               <button
-                className="hd-color p4-size lowercase italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4"
+                className="hd-color p4-size lowercase italic outline-none focus:outline-none mb-2 md:mb-3 lg:mb-4 cursor-none"
                 onClick={onExpandToggle}
               >
                 {isExpanded ? 'hide' : 'show'}

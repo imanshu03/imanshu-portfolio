@@ -40,7 +40,7 @@ const Home: NextPage<IProps> = (props) => {
   return (
     <ErrorBoundary>
       <CustomCursor />
-      <main className="drop-shadow-lg my-0 mx-0 md:mx-[6rem] lg:mx-[10rem] xl:mx-[15rem] box-border">
+      <main className="drop-shadow-lg my-0 mx-0 box-border">
         {PageAppComponents.map((pageItem, index) => {
           const Component = (PageComponents as any)[pageItem.Component];
           if (Component) {

@@ -35,7 +35,7 @@ const AwardsPage: React.FC<IProps> = (props) => {
 
   return (
     <div id="awards" className={clsx(className)}>
-      <div className="pd-section">
+      <div className="pd-section md:px-[6rem] lg:px-[10rem] xl:px-[15rem]">
         <SectionHeading
           timeline={masterTimeline}
           heading={sectionHeadingText}

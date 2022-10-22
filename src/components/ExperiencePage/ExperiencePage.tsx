@@ -40,7 +40,7 @@ const ExperiencePage: React.FC<IProps> = (props) => {
 
   return (
     <div className={clsx(className, 'relative')} id="experience">
-      <div className="pd-section relative z-10">
+      <div className="pd-section relative z-10 md:px-[6rem] lg:px-[10rem] xl:px-[15rem]">
         <SectionHeading
           heading={sectionHeadingText}
           subHeading={sectionSubHeadingText}

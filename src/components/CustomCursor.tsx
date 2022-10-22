@@ -43,7 +43,7 @@ const CustomCursor = () => {
       <div
         className="absolute z-[100] rounded-cursor hidden lg:block"
         style={{
-          transform: `scale(${zoom ? 0.4 : 1})`,
+          transform: `translate(-50%, -50%) scale(${zoom ? 0.4 : 1})`,
           left: pos.x,
           top: pos.y,
         }}

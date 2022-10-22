@@ -58,7 +58,7 @@ const SkillsPage: React.FC<IProps> = (props) => {
 
   return (
     <div className={clsx(className, 'relative')} id="skills">
-      <div className="pd-section">
+      <div className="pd-section md:px-[6rem] lg:px-[10rem] xl:px-[15rem] z-10">
         <SectionHeading
           heading={sectionHeadingText}
           subHeading={sectionSubHeadingText}
