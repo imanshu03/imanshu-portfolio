@@ -23,6 +23,7 @@ const useTimeline = (
   );
 
   useEffect(() => {
+    if (checkIfMobileDevice()) return setMasterTimeline(null);
     const timeline = gsap.timeline({ ...timelineOptions });
     if (pauseOnInit) timeline.pause(0);
     setMasterTimeline(timeline);
@@ -33,7 +34,6 @@ const useTimeline = (
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (checkIfMobileDevice()) return null;
   return masterTimeline;
 };
 
