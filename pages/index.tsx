@@ -65,7 +65,7 @@ const Home: NextPage<IProps> = (props) => {
 
 export async function getStaticProps() {
   try {
-    return { props: { PageConfig } };
+    return { props: { PageConfig }, revalidate: 3600 };
   } catch (error) {
     return { notFound: true };
   }
