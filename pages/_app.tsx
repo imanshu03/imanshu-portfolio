@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="Imanshu Rathore's Portfolio"
           key="og:description"
         />
-        <link rel="icon" href="/profile.ico" />
+        <link rel="icon" href="/coding.ico" />
         <link rel="apple-touch-icon" href="/profile.png" />
         <link rel="manifest" href="/manifest.json" />
       </Head>
