@@ -4,6 +4,7 @@ import SkillBox from './SkillBox';
 import useTimeline from '@hooks/useTimeline';
 import clsx from 'classnames';
 import CurveWrapper from '@common/CurveWrapper';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IProps {
   className?: string;
@@ -25,6 +26,7 @@ const SkillsPage: React.FC<IProps> = (props) => {
     pageData: { sectionHeadingText, sectionSubHeadingText, skillsData },
   } = props;
 
+  const isMobileDevice = useMobileDevice();
   const skillWrapperRef = useRef<Array<any>>(
     Array(Object.keys(skillsData).length).fill(null),
   );
@@ -84,12 +86,14 @@ const SkillsPage: React.FC<IProps> = (props) => {
           ))}
         </div>
       </div>
-      <CurveWrapper
-        direction="up"
-        shadowDirection="up"
-        variant="secondary"
-        invert
-      />
+      {!isMobileDevice ? (
+        <CurveWrapper
+          direction="up"
+          shadowDirection="up"
+          variant="secondary"
+          invert
+        />
+      ) : null}
     </div>
   );
 };

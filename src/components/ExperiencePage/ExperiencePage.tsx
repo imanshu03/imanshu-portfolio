@@ -4,6 +4,7 @@ import SectionHeading from '@common/SectionHeading';
 import ExperienceBox from './ExperienceBox';
 import clsx from 'classnames';
 import CurveWrapper from '@common/CurveWrapper';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IProps {
   className?: string;
@@ -29,6 +30,7 @@ const ExperiencePage: React.FC<IProps> = (props) => {
     pageData: { sectionHeadingText, sectionSubHeadingText, experienceData },
   } = props;
 
+  const isMobileDevice = useMobileDevice();
   const masterTimeline = useTimeline({
     scrollTrigger: {
       trigger: '#experience',
@@ -61,11 +63,13 @@ const ExperiencePage: React.FC<IProps> = (props) => {
           </div>
         )}
       </div>
-      <CurveWrapper
-        direction="down"
-        variant="secondary"
-        className="relative top-[1px]"
-      />
+      {!isMobileDevice ? (
+        <CurveWrapper
+          direction="down"
+          variant="secondary"
+          className="relative top-[1px]"
+        />
+      ) : null}
     </div>
   );
 };

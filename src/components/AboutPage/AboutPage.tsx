@@ -10,6 +10,7 @@ import ProfileImage from '@assets/profile.webp';
 import ProfileMaskImage from '@assets/profile-mask.webp';
 import RocketWhite from '@assets/RocketWhite.json';
 import CurveWrapper from '@common/CurveWrapper';
+import { useMobileDevice } from '@hooks/useMobileDevice';
 
 interface IProps {
   className?: string;
@@ -34,6 +35,7 @@ const AboutPage: React.FC<IProps> = (props) => {
     autoplay: true,
   });
 
+  const isMobileDevice = useMobileDevice();
   const masterTimeline = useTimeline(
     {},
     { enableScrollTrigger: false, pauseOnInit: true },
@@ -230,7 +232,9 @@ const AboutPage: React.FC<IProps> = (props) => {
         )}
       </div>
 
-      <CurveWrapper direction="down" className="absolute bottom-0" />
+      {!isMobileDevice ? (
+        <CurveWrapper direction="down" className="absolute bottom-0" />
+      ) : null}
     </div>
   );
 };
