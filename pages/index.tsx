@@ -64,7 +64,6 @@ const Home: NextPage<IProps> = (props) => {
 
 export async function getStaticProps() {
   try {
-    // const response = await axios.get(process.env.CONFIG_URL ?? '');
     return { props: { PageConfig } };
   } catch (error) {
     return { notFound: true };

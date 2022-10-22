@@ -213,14 +213,11 @@
   position: relative;
   user-select: none;
   min-width: 10rem;
+  height: 4rem;
+  transition: transform 0.2s ease-in-out;
 
   &:active {
-    .button-3d-main-bar {
-      transform: translateY(0.5rem);
-    }
-    .button-3d-bottom-bar {
-      height: 0.5rem;
-    }
+    transform: translateY(0.5rem);
   }
 
   &-content {
@@ -238,7 +235,6 @@
     @apply text-ShadowBlue;
     background-color: white;
     z-index: 3;
-    transition: all 0.2s ease-in-out;
 
     &::after {
       content: '';
@@ -268,7 +264,5 @@
     left: calc(-2rem + 1px);
     height: 1rem;
     @apply bg-ShadowBlue;
-    transition: all 0.2s ease-in-out;
-    bottom: -1rem;
   }
 }
